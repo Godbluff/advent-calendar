@@ -15,7 +15,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'pm-app',
-            template: "\n        <h1>Angular Calendar Coming Soon...</h1>\n    "
+            template: "\n        <div class=\"christmasbg\">\n            <h1>Angular Calendar Coming Soon...</h1>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
