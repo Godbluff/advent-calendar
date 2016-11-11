@@ -24,18 +24,18 @@ export class DoorComponent {
 
     }
     ngAfterViewInit(){
-    setTimeout(() => {
-        var el = document.querySelector("#" + this.containerId);
-        var top = el.getBoundingClientRect().top;
-        var left = el.getBoundingClientRect().left;
-        this.bgPos = `${-left-1}px ${-top-1}px`;
+        setTimeout(() => {
+            var el = document.querySelector("#" + this.containerId);
+            var top = el.getBoundingClientRect().top;
+            var left = el.getBoundingClientRect().left;
+            this.bgPos = `${-left-1}px ${-top-1}px`;
 
-       window.addEventListener('resize', () => {
-           var el = document.querySelector("#" + this.containerId);
-           var top = el.getBoundingClientRect().top;
-           var left = el.getBoundingClientRect().left;
-           this.bgPos = `${-left}px ${-top}px`;
-       };
+           window.addEventListener('resize', () => {
+               var el = document.querySelector("#" + this.containerId);
+               var top = el.getBoundingClientRect().top;
+               var left = el.getBoundingClientRect().left;
+               this.bgPos = `${-left}px ${-top}px`;
+           };
         },0);
     }
 
