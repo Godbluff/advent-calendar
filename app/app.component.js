@@ -146,7 +146,6 @@ var AppComponent = (function () {
         //            .subscribe(calendar => this.calendar = calendar,
         //                        error => this.errorMessage = <any>error,
         //                        () => console.log(this.calendar));
-        //    }
     };
     AppComponent = __decorate([
         core_1.Component({

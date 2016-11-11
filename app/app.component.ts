@@ -155,6 +155,6 @@ export class AppComponent {
 //            .subscribe(calendar => this.calendar = calendar,
 //                        error => this.errorMessage = <any>error,
 //                        () => console.log(this.calendar));
-//    }
+    }
 
 }
