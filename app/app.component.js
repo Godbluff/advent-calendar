@@ -9,91 +9,152 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var calendar_service_1 = require("./services/calendar.service");
 var AppComponent = (function () {
-    function AppComponent() {
-        this.doorSequence = [1, 5, 3, 17, 23, 8, 9, 13, 21, 4, 19, 22, 2, 11, 15, 18, 6, 12, 7, 10, 14, 16, 20, 24];
-        this.anyThing = 'Passed through.';
-        this.doorContent = [
-            {
-                quote: 'hello!'
-            },
-            {
-                quote: 'I am here.'
-            },
-            {
-                quote: 'Merry Xmas'
-            },
-            {
-                quote: 'Santa is Waiting'
-            },
-            {
-                quote: 'Krampus! Oh No!'
-            },
-            {
-                quote: 'Keep Baking.'
-            },
-            {
-                quote: 'Presents all done?'
-            },
-            {
-                quote: 'Looking Good.'
-            },
-            {
-                quote: 'Keep the Children happy.'
-            },
-            {
-                quote: 'Lost Cause.'
-            },
-            {
-                quote: 'This is not the day.'
-            },
-            {
-                quote: 'Roger.'
-            },
-            {
-                quote: 'Checklist time.'
-            },
-            {
-                quote: 'The Insanity begins'
-            },
-            {
-                quote: 'You awake?'
-            },
-            {
-                quote: 'No phone for you.'
-            },
-            {
-                quote: 'Keep baking.'
-            },
-            {
-                quote: 'Turkey time.'
-            },
-            {
-                quote: 'Stickmeat!'
-            },
-            {
-                quote: 'Sausage!'
-            },
-            {
-                quote: 'Last minute Prep.'
-            },
-            {
-                quote: 'Almost there.'
-            },
-            {
-                quote: 'Don\'t Panic'
-            },
-            {
-                quote: 'Merry Christmas!'
-            }
-        ];
+    function AppComponent(_calendarService) {
+        this._calendarService = _calendarService;
+        this.calendar = [{
+                "doorSequence": [
+                    1,
+                    5,
+                    3,
+                    17,
+                    23,
+                    8,
+                    9,
+                    13,
+                    21,
+                    4,
+                    19,
+                    22,
+                    2,
+                    11,
+                    15,
+                    18,
+                    6,
+                    12,
+                    7,
+                    10,
+                    14,
+                    16,
+                    20,
+                    24
+                ],
+                "doorContent": [
+                    {
+                        "doorNumber": 1,
+                        "quote": "hello!"
+                    },
+                    {
+                        "doorNumber": 2,
+                        "quote": "I am here."
+                    },
+                    {
+                        "doorNumber": 3,
+                        "quote": "Merry Xmas"
+                    },
+                    {
+                        "doorNumber": 4,
+                        "quote": "Santa is Waiting"
+                    },
+                    {
+                        "doorNumber": 5,
+                        "quote": "Krampus! Oh No!"
+                    },
+                    {
+                        "doorNumber": 6,
+                        "quote": "Keep Baking."
+                    },
+                    {
+                        "doorNumber": 7,
+                        "quote": "Presents all done?"
+                    },
+                    {
+                        "doorNumber": 8,
+                        "quote": "Looking Good."
+                    },
+                    {
+                        "doorNumber": 9,
+                        "quote": "Keep the Children happy."
+                    },
+                    {
+                        "doorNumber": 10,
+                        "quote": "Lost Cause."
+                    },
+                    {
+                        "doorNumber": 11,
+                        "quote": "This is not the day."
+                    },
+                    {
+                        "doorNumber": 12,
+                        "quote": "Roger."
+                    },
+                    {
+                        "doorNumber": 13,
+                        "quote": "Checklist time."
+                    },
+                    {
+                        "doorNumber": 14,
+                        "quote": "The Insanity begins"
+                    },
+                    {
+                        "doorNumber": 15,
+                        "quote": "You awake?"
+                    },
+                    {
+                        "doorNumber": 16,
+                        "quote": "No phone for you."
+                    },
+                    {
+                        "doorNumber": 17,
+                        "quote": "Keep baking."
+                    },
+                    {
+                        "doorNumber": 18,
+                        "quote": "Turkey time."
+                    },
+                    {
+                        "doorNumber": 19,
+                        "quote": "Stickmeat!"
+                    },
+                    {
+                        "doorNumber": 20,
+                        "quote": "Sausage!"
+                    },
+                    {
+                        "doorNumber": 21,
+                        "quote": "Last minute Prep."
+                    },
+                    {
+                        "doorNumber": 22,
+                        "quote": "Almost there."
+                    },
+                    {
+                        "doorNumber": 23,
+                        "quote": "Do not Panic"
+                    },
+                    {
+                        "doorNumber": 24,
+                        "quote": "Merry Christmas!"
+                    }
+                ]
+            }];
+        this.errorMessage = '';
     }
+    AppComponent.prototype.ngOnInit = function () {
+        //        this._calendarService.getCalendar()
+        //            .subscribe(calendar => this.calendar = calendar,
+        //                        error => this.errorMessage = <any>error,
+        //                        () => console.log(this.calendar));
+        //    }
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'pm-app',
-            template: "\n        <div class=\"christmasbg\">\n            <div style=\"padding-top: 10px; width: 100%; height: 50px; line-height: 50px; text-align: center; font-size: 40px; text-shadow: 0px 0px 4px black;\">Angular Calendar Coming Soon...</div>\n            <cc-door *ngFor=\"let door of doorSequence; let i = index;\" [doorNumber]=\"door\" [doorQuote]=\"doorContent[door-1]\"></cc-door>\n        </div>\n    "
+            template: "\n        <div class=\"christmasbg\">\n            <div style=\"padding-top: 10px; width: 100%; height: 50px; line-height: 50px; text-align: center; font-size: 40px; text-shadow: 0px 0px 4px black;\">Angular Calendar Coming Soon...</div>\n            <div>{{errorMessage}}</div>\n            <cc-door *ngFor=\"let door of calendar[0].doorSequence; let i = index;\" [doorNumber]=\"door\" [doorQuote]=\"calendar[0].doorContent[door-1].quote\" [containerId]=\"'number-' + door\"></cc-door>\n        </div>\n    ",
+            providers: [calendar_service_1.CalendarService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [calendar_service_1.CalendarService])
     ], AppComponent);
     return AppComponent;
 }());
