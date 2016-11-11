@@ -35,7 +35,7 @@ export class DoorComponent {
                var top = el.getBoundingClientRect().top;
                var left = el.getBoundingClientRect().left;
                this.bgPos = `${-left}px ${-top}px`;
-           };
+           });
         },0);
     }
 
