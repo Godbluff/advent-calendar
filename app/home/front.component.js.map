@@ -1,0 +1,1 @@
+{"version":3,"file":"front.component.js","sourceRoot":"","sources":["front.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAA0B,eAAe,CAAC,CAAA;AAO1C;IAAA;QACW,cAAS,GAAW,SAAS,CAAC;IACzC,CAAC;IAPD;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,WAAW,EAAE,sBAAsB;YACnC,SAAS,EAAE,CAAC,qBAAqB,CAAC;SACrC,CAAC;;sBAAA;IAGF,qBAAC;AAAD,CAAC,AAFD,IAEC;AAFY,sBAAc,iBAE1B,CAAA"}

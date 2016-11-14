@@ -11,15 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 var app_component_1 = require('./app.component');
 var door_component_1 = require("./door/door.component");
+var calendar_component_1 = require("./calendar/calendar.component");
+var editor_component_1 = require("./editor/editor.component");
+var front_component_1 = require("./home/front.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, door_component_1.DoorComponent],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, router_1.RouterModule.forRoot([
+                    { path: 'calendar', component: calendar_component_1.CalendarComponent },
+                    { path: 'editor', component: editor_component_1.EditorComponent },
+                    { path: 'home', component: front_component_1.FrontComponent },
+                    { path: '', redirectTo: 'home', pathMatch: 'full' },
+                    { path: '**', redirectTo: 'home', pathMatch: 'full' }
+                ])],
+            declarations: [app_component_1.AppComponent, door_component_1.DoorComponent, calendar_component_1.CalendarComponent, editor_component_1.EditorComponent, front_component_1.FrontComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
