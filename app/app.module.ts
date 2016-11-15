@@ -7,12 +7,13 @@ import { AppComponent }  from './app.component';
 import { DoorComponent } from "./door/door.component";
 import { CalendarComponent } from "./calendar/calendar.component";
 import { EditorComponent } from "./editor/editor.component";
-import {FrontComponent} from "./home/front.component";
-
+import { FrontComponent } from "./home/front.component";
+import { EditorDoorComponent } from "./editor/doors/editor.door.component";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
-  imports: [ BrowserModule, HttpModule, RouterModule.forRoot([
+  imports: [ BrowserModule, HttpModule, FormsModule, RouterModule.forRoot([
     { path: 'calendar', component: CalendarComponent },
     { path: 'editor', component: EditorComponent },
     { path: 'home', component: FrontComponent },
@@ -20,7 +21,7 @@ import {FrontComponent} from "./home/front.component";
     { path: '**', redirectTo: 'home', pathMatch: 'full'}
 
   ]) ],
-  declarations: [ AppComponent, DoorComponent, CalendarComponent, EditorComponent, FrontComponent ],
-  bootstrap: [ AppComponent ]
+  declarations: [ AppComponent, DoorComponent, CalendarComponent, EditorComponent, FrontComponent, EditorDoorComponent ],
+bootstrap: [ AppComponent ]
 })
 export class AppModule { }

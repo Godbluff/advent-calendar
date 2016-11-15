@@ -17,19 +17,21 @@ var door_component_1 = require("./door/door.component");
 var calendar_component_1 = require("./calendar/calendar.component");
 var editor_component_1 = require("./editor/editor.component");
 var front_component_1 = require("./home/front.component");
+var editor_door_component_1 = require("./editor/doors/editor.door.component");
+var forms_1 = require("@angular/forms");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, router_1.RouterModule.forRoot([
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, router_1.RouterModule.forRoot([
                     { path: 'calendar', component: calendar_component_1.CalendarComponent },
                     { path: 'editor', component: editor_component_1.EditorComponent },
                     { path: 'home', component: front_component_1.FrontComponent },
                     { path: '', redirectTo: 'home', pathMatch: 'full' },
                     { path: '**', redirectTo: 'home', pathMatch: 'full' }
                 ])],
-            declarations: [app_component_1.AppComponent, door_component_1.DoorComponent, calendar_component_1.CalendarComponent, editor_component_1.EditorComponent, front_component_1.FrontComponent],
+            declarations: [app_component_1.AppComponent, door_component_1.DoorComponent, calendar_component_1.CalendarComponent, editor_component_1.EditorComponent, front_component_1.FrontComponent, editor_door_component_1.EditorDoorComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
