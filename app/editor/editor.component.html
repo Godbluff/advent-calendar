@@ -1,36 +1,74 @@
 <div class="editorbg">
     <div class="calendar-header">Calendar Editor<div class="calendar-border"></div></div>
+    <div class="link">
+        <a [routerLink]="['/']">Front Page</a><br/>
+        <a [routerLink]="['/calendar']">Calendar</a>
+    </div>
 
-    <div class="link"><a [routerLink]="['/calendar']">Calendar</a></div>
 
-    <div class="col-md-6" style="text-align: center;">
+    <div class="col-md-8" style="text-align: center;">
 
-        <input class="edit-input" placeholder="Company name"/>
-        <input class="edit-input" placeholder="Calendar Background Url"/>
-        <input class="edit-input" placeholder="Add participant" [(ngModel)]="newParticipant" (keyup.enter)="addParticipant(newParticipant)"/>
+        <input class="edit-input" placeholder="Company name"
+               popover="The Heading on the calendar will be 'The <company name> Advent Calendar'."
+               popoverPlacement="bottom"
+               [popoverOnHover]="true"
+               [popoverAnimation]="true"/>
+        <input class="edit-input" placeholder="Calendar Background Url"
+               popover="If you do not wich to use the default background, enter a valid URL for another image and it will be used instead."
+               popoverPlacement="bottom"
+               [popoverOnHover]="true"
+               [popoverAnimation]="true">
+        <input class="edit-input" placeholder="Add participant" [(ngModel)]="newParticipant" (keyup.enter)="addParticipant(newParticipant)"
+               popover="Add the name of a new paticipant. All participants use the calendar name and the participant name in order to access their version of the calendar."
+               popoverPlacement="bottom"
+               [popoverOnHover]="true"
+               [popoverAnimation]="true"/>
 
         <div class="door-edit-container">
             <div style="font-size: 18px;">Edit Door Number: {{selectedDoor.number}}</div>
-            <input  class="edit-input" placeholder="prize" [(ngModel)]="selectedDoor.prize" (keyup)="updateEntry('prize')" />
-            <input class="edit-input" placeholder="prizeImg - optional" [(ngModel)]="selectedDoor.imageUrl" (keyup)="updateEntry('imageUrl')" (keyup.enter)="enterToTab()" />
-            <input class="edit-input" placeholder="A Memorable quote." [(ngModel)]="selectedDoor.quote" (keyup)="updateEntry('quote')" />
-            <input class="edit-input" placeholder="Instructions: 'Pick up prize at...'" [(ngModel)]="selectedDoor.instructions" (keyup)="updateEntry('instructions')" />
+            <input  class="edit-input" placeholder="The Prize" [(ngModel)]="selectedDoor.prize" (keyup)="updateEntry('prize')" (blur)="doorCheck()"
+                    popover="Enter the prize to be handed out on December {{selectedDoor.number}}."
+                    popoverPlacement="bottom"
+                    [popoverOnHover]="true"
+                    [popoverAnimation]="true"/>
+            <input class="edit-input" placeholder="Prize Image - Optional" [(ngModel)]="selectedDoor.imageUrl" (keyup)="updateEntry('imageUrl')" (keyup.enter)="enterToTab()"
+                   popover="Optional image URL for the prize on December {{selectedDoor.number}}. If nothing is entered, the default image is used."
+                   popoverPlacement="bottom"
+                   [popoverOnHover]="true"
+                   [popoverAnimation]="true"/>
+            <input class="edit-input" placeholder="A Memorable Quote." [(ngModel)]="selectedDoor.quote" (keyup)="updateEntry('quote')"
+                   popover="Insert a short quote if you want."
+                   popoverPlacement="bottom"
+                   [popoverOnHover]="true"
+                   [popoverAnimation]="true"/>
+            <input class="edit-input" placeholder="Instructions: 'Pick up prize at...'" [(ngModel)]="selectedDoor.instructions" (keyup)="updateEntry('instructions')"
+                   popover="Tell your winning participants how to pick up their prize."
+                   popoverPlacement="bottom"
+                   [popoverOnHover]="true"
+                   [popoverAnimation]="true"/>
             <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">This box saves everything, always.</div>
+            <img  *ngIf="this.selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="this.selectedDoor.imageUrl" style="max-width: 20%; float: right;"/>
         </div>
 
     </div>
 
-    <div class="col-md-6">
-        <div *ngFor="let door of editorService.doors; let i = index" (click)="showDoorData(i); highlightStatus[i]" [class.selected]="highlightStatus[i]" class="door-select">{{i+1}}</div>
+    <div class="col-md-4" style="text-align: center;">
+        <div *ngFor="let door of editorService.doors; let i = index" (click)="showDoorData(i)" [class.selected]="highlightStatus[i]" class="door-select">{{i+1}}</div>
+        <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">Select a calendar entry to edit it.</div>
+        <div [routerLink]="['/calendar']" class="btn btn-success" style="width: 80%; margin-top: 20px;"
+             popover="This will freeze the calendar and show you the calendar view. You can log back in to edit later."
+             popoverPlacement="bottom"
+             [popoverOnHover]="true"
+             [popoverAnimation]="true">End Editing</div>
     </div><br/>
 
     <div class="col-md-12 participants-container">
         <div style="font-size: 18px;margin-bottom: 10px;">Participiants</div>
-        <div *ngFor="let person of this.editorService.participants; let i = index" class="btn btn-default" style="min-width: 120px; text-align: left; margin-right: 2px;">{{person.name}}<div (click)="removeParticipant(i)" style="margin-left: 10px;" class="glyphicon glyphicon-remove" style="float: right; line-height: 18px; color: red; cursor: pointer;"></div></div>
+        <div *ngFor="let person of this.editorService.participants; let i = index" class="btn btn-default" style="min-width: 120px; text-align: left; margin-right: 2px;">{{person.name}}<div (click)="removeParticipant(i)" style="margin-left: 10px;" class="glyphicon glyphicon-remove" style="float: right; line-height: 18px; color: red; cursor: pointer;" popover="Remove participant."
+                                                                                                                                                                                              popoverPlacement="top"
+                                                                                                                                                                                              [popoverOnHover]="true"
+                                                                                                                                                                                              [popoverAnimation]="true"></div></div>
         <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">All participants log in by using the comany name of the calendar and the participant name as is it typed in this list.<br/>Once the calendar is initiated on the 1st of December, participants can no longer be edited.</div>
     </div>
-
-
-    <div>NOTE: Create small front-login for the editor. Requires companyName and admin password. POST to BE. Create 'End Edit'-button</div>
 
 </div>

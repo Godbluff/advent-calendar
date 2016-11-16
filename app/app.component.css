@@ -15,3 +15,7 @@ div.panel-heading {
     color: white;
     padding-left: 100px;
 }
+.popover-content{
+    font-size: 12px;
+    color: black;
+}

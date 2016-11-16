@@ -1,0 +1,34 @@
+<div class="editorbg">
+    <div class="calendar-header">Create New Calendar<div class="calendar-border"></div></div>
+    <div class="link">
+        <a [routerLink]="['/']">Front Page</a><br/>
+        <a [routerLink]="['/calendar']">Calendar</a>
+    </div>
+    <div class="col-sm-4">
+        When creating a new calendar, all you have to do is type in the name of the calendar and create a password for it. This is all you need to enter the editor.<br/><br/>
+        There is no recovery for the password at this time, so make sure you remember it.<br/><br/>
+        Once you click 'Initiate Calendar' you will be taken to the main editor to set up your custom calendar.<br/><br/> Have fun.
+    </div>
+    <div class="col-sm-4" style="text-align: center;">
+        <div class="input-header">Calendar Name</div>
+        <input class="front-input" placeholder="Place Of Business" style="width: 90%; color: black" [(ngModel)]="companyName"
+               popover="Type in the name of the calendar you want to check."
+               popoverPlacement="bottom"
+               [popoverOnHover]="true"
+               [popoverAnimation]="true"/>
+        <br/><br/>
+        <div class="input-header">Administrator Password</div>
+        <input class="front-input"  placeholder="Type Name Right Here" style="width: 90%;" [(ngModel)]="password"
+               popover="Type the administrator password for the calendar in order to edit it."
+               popoverPlacement="bottom"
+               [popoverOnHover]="true"
+               [popoverAnimation]="true"/>
+        <div [routerLink]="['/editor']" class="btn btn-success" style="width: 90%; margin-top: 20px;"
+             popover="This will create a new calendar with the entered name and password. NOTE DOWN THE PASSWORD. There is no recovery for it."
+             popoverPlacement="bottom"
+             [popoverOnHover]="true"
+             [popoverAnimation]="true">Initiate Calendar</div>
+
+    </div>
+    <div class="col-sm-4" style="text-align: center;"><img src="http://www.freeiconspng.com/uploads/christmas-tree-png-19.png" width="100%"/></div>
+</div>

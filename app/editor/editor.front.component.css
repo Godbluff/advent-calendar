@@ -1,17 +1,20 @@
-.frontbg {
+.editorbg {
     width: 100%;
-    height: 1080px;
-    background: url('/app/assets/images/editorbg.jpg') no-repeat;
+    height: auto;
+    min-height: 100%;
+    background: url('/app/assets/images/editorbg.jpg');
     background-size: cover;
     color: white;
-    padding: 150px 50px 50px 50px;
+    padding-left: 0px;
+    padding-top: 150px;
+    padding-bottom: 50px;
 }
 .calendar-header {
     width: 100%; height: 50px; line-height: 50px; text-align: center; font-size: 40px; text-shadow: 0 0 4px black;
     background: #3b76b4;
     position: absolute;
     left: 0; top: 0;
-    font-family: "Emilys Candy";
+    font-family: Emilys Candy;
 }
 .calendar-border {
     position: absolute;
@@ -27,10 +30,6 @@
     top: 0px;left: 0px;
     color: white !important;
 }
-h3{
-    font-family: "Emilys Candy";
-    text-shadow: 2px 2px 5px black;
-}
 .link a {
     color: white;
 }
@@ -38,7 +37,7 @@ input{
     outline: none;
 }
 .front-input{
-    width: 100%;
+    width: 80%;
     background: rgba(0,24,0,0.7);
     border: none;
     color: white;
@@ -51,8 +50,8 @@ input{
     box-shadow: 1px 1px 1px rgba(196,255,196,0.3), -1px -1px 1px rgba(0,12,0,0.3), inset 5px 5px 10px rgba(0,0,0,0.5), 0px 0px 10px 5px rgba(196,255,196,0.6);
 }.front-input:focus{
      box-shadow: 1px 1px 1px rgba(196,255,196,0.3), -1px -1px 1px rgba(0,12,0,0.3), inset 5px 5px 10px rgba(0,0,0,0.5), 0px 0px 2px 2px rgba(196,255,196,0.6);
-    outline: none;
-}
+     outline: none;
+ }
 
 .input-header{
     margin: 0 25%;

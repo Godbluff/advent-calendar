@@ -47,6 +47,7 @@
     font-size: 36px;
     color: white;
     text-shadow: 0px 0px 2px black;
+    font-family: 'Henny Penny';
 }
 
 .back {
@@ -70,4 +71,17 @@
     background: multiply;
     background-size: cover;
     mix-blend-mode: multiply;
+}
+.image{
+    position: absolute;
+    height: 170%;
+    top: -23px;
+    left: -3px;
+    transition: all 3s ease-in-out;
+}
+.image.hidden{
+    opacity: 0;
+}
+.image.shown{
+    opacity: 1;
 }

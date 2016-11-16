@@ -24,7 +24,8 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
 
       // other libraries
-      'rxjs': 'npm:rxjs'
+      'rxjs': 'npm:rxjs',
+      'ng2-popover': 'node_modules/ng2-popover'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -34,7 +35,8 @@
       },
       rxjs: {
         defaultExtension: 'js'
-      }
+      },
+      "ng2-popover": { "main": "index.js", "defaultExtension": "js" }
     }
   });
 })(this);

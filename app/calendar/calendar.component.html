@@ -4,6 +4,9 @@
     <div class="calendar-border"></div>
     <div>{{errorMessage}}</div>
     <cc-door *ngFor="let door of calendar[0].doorSequence; let i = index;" [doorNumber]="door" [doorQuote]="calendar[0].doorContent[door-1].quote" [containerId]="'number-' + door"></cc-door>
-    <div class="link"><a [routerLink]="['/editor']">Editor</a></div>
+    <div class="link">
+        <a [routerLink]="['/']">Front Page</a><br/>
+        <a [routerLink]="['/editor']">Editor</a>
+    </div>
 
 </div>
