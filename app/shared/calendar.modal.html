@@ -1,0 +1,10 @@
+<ngl-modal [header]="noHeader ? '' : 'Modal Header'" [(open)]="opened" [size]="size" [directional]="directional">
+    <div body style="color: black;">
+        <img src="{{modalImage}}" style="height: 100px; float: right;"/>
+        <p>{{mainText}}</p>
+        <p>{{prize}}</p>
+    </div>
+    <template ngl-modal-footer *ngIf="!noFooter">
+        <button class="slds-button slds-button--destructive" (click)="cancel()">Close</button>
+    </template>
+</ngl-modal>

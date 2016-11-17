@@ -55,7 +55,7 @@
     <div class="col-md-4" style="text-align: center;">
         <div *ngFor="let door of editorService.doors; let i = index" (click)="showDoorData(i)" [class.selected]="highlightStatus[i]" class="door-select">{{i+1}}</div>
         <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">Select a calendar entry to edit it.</div>
-        <div [routerLink]="['/calendar']" class="btn btn-success" style="width: 80%; margin-top: 20px;"
+        <div [routerLink]="['/calendar']" fragment="top" class="btn btn-success" style="width: 80%; margin-top: 20px;"
              popover="This will freeze the calendar and show you the calendar view. You can log back in to edit later."
              popoverPlacement="bottom"
              [popoverOnHover]="true"

@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {CalendarModal} from "../shared/calendar.modal";
 
 @Component({
 
     selector: 'cc-door',
     moduleId: module.id,
     templateUrl: 'door.component.html',
-    styleUrls: ['door.component.css']
+    styleUrls: ['door.component.css'],
+    providers: [ CalendarModal ]
 
 })
 
@@ -14,15 +16,15 @@ export class DoorComponent {
     @Input() doorNumber : number;
     @Input() doorQuote : string;
     @Input() containerId: string;
+    @Input() prize: string;
     cardClass: string = 'card';
     doorOpen: boolean = false;
     bgPos: string = '';
 
+    constructor(){}
 
-    ngOnInit(): void {
+    ngOnInit(): void { }
 
-
-    }
     ngAfterViewInit(){
         setTimeout(() => {
             var el = document.querySelector("#" + this.containerId);
@@ -40,9 +42,8 @@ export class DoorComponent {
     }
 
     toggleDoor(): void {
-
+        console.log(this.prize);
         this.doorOpen = !this.doorOpen;
-
     }
 
 }

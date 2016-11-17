@@ -8,6 +8,7 @@
     padding-left: 0px;
     padding-top: 120px;
     padding-bottom: 50px;
+    float: left;
 }
 .calendar-header {
      width: 100%; height: 50px; line-height: 50px; text-align: center; font-size: 40px; text-shadow: 0 0 4px black;

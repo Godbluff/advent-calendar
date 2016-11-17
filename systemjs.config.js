@@ -6,7 +6,9 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': 'node_modules/',
+      'ng-lightning/ng-lightning': 'https://unpkg.com/ng-lightning@1.0.1/bundles/ng-lightning.umd.js',
+      'tether': 'https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.js'
     },
     // map tells the System loader where to look for things
     map: {

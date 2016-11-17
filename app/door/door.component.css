@@ -85,3 +85,6 @@
 .image.shown{
     opacity: 1;
 }
+.slds-backdrop--open{
+    background: none !important;
+}

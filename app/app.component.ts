@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from "./services/calendar.service";
+import { Router, NavigationEnd } from '@angular/router';
+import 'rxjs/add/operator/filter';
 
 
 @Component({
@@ -15,12 +17,13 @@ export class AppComponent {
     errorMessage: string = '';
     pageTitle: 'Christmas Calendar';
 
-    constructor() {
-
+    constructor(private router: Router) {
     }
 
-    ngOnInit(): void {
-
+    ngOnInit() {
+        this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+            window.scroll(0, 0);
+        });
     }
 
 }

@@ -13,7 +13,32 @@ export class EditorService {
         { id: 1234, name: "Lotomar"},
     ];
     calendar: any = [];
-
+    doorSequence: any = [
+    1,
+    5,
+    3,
+    17,
+    23,
+    8,
+    9,
+    13,
+    21,
+    4,
+    19,
+    22,
+    2,
+    11,
+    15,
+    18,
+    6,
+    12,
+    7,
+    10,
+    14,
+    16,
+    20,
+    24
+];
     doors: any =  [
         {
             number: 1,

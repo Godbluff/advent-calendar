@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from "../services/calendar.service";
 import { ICalendar } from '../calendar';
+import { EditorService } from "../editor/editor.service";
 
 
 @Component({
@@ -9,7 +10,7 @@ import { ICalendar } from '../calendar';
     moduleId: module.id,
     templateUrl: 'calendar.component.html',
     styleUrls: ['calendar.component.css'],
-    providers: [ CalendarService ]
+    providers: [ CalendarService, EditorService ]
 })
 
 
@@ -45,15 +46,18 @@ export class CalendarComponent {
         "doorContent": [
             {
                 "doorNumber": 1,
-                "quote": "hello!"
+                "quote": "Hallo.",
+                "prize": "Noen fine esker. Disse er veldig, veldig fine. Laget av papir, papp og borrelås."
             },
             {
                 "doorNumber": 2,
-                "quote": "I am here."
+                "quote": "I am here.",
+                "prize": "Vi har noen bananer til overs. Disse er nnå dine. Sunt er det og..."
             },
             {
                 "doorNumber": 3,
-                "quote": "Merry Xmas"
+                "quote": "Merry Xmas",
+                "prize": "En Rolex klokke er funnet på konferanserommet. Ingen har hentet den, så den er nå din. Vi satser på at ingen kjenner den igjen."
             },
             {
                 "doorNumber": 4,
@@ -143,7 +147,7 @@ export class CalendarComponent {
     }]
         ;
     errorMessage: string = '';
-    constructor(private _calendarService: CalendarService) {
+    constructor(private _calendarService: CalendarService, private editorService: EditorService) {
 
     }
 

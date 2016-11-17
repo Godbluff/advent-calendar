@@ -5,6 +5,7 @@ import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 
 import { PopoverModule } from "ng2-popover";
+import { NglModule } from "ng-lightning/ng-lightning";
 
 import { AppComponent }  from './app.component';
 import { DoorComponent } from "./door/door.component";
@@ -13,11 +14,13 @@ import { EditorComponent } from "./editor/editor.component";
 import { FrontComponent } from "./home/front.component";
 import { EditorDoorComponent } from "./editor/doors/editor.door.component";
 import { EditorFrontComponent } from "./editor/editor.front.component";
+import { CalendarModal } from "./shared/calendar.modal";
+
 
 
 
 @NgModule({
-  imports: [ BrowserModule, HttpModule, FormsModule, PopoverModule, RouterModule.forRoot([
+  imports: [ BrowserModule, HttpModule, FormsModule, NglModule.forRoot(), PopoverModule, RouterModule.forRoot([
     { path: 'calendar', component: CalendarComponent },
     { path: 'editor-front', component: EditorFrontComponent },
     { path: 'editor', component: EditorComponent },
@@ -27,7 +30,7 @@ import { EditorFrontComponent } from "./editor/editor.front.component";
 
   ]) ],
 
-  declarations: [ AppComponent, DoorComponent, CalendarComponent, EditorComponent, FrontComponent, EditorDoorComponent, EditorFrontComponent ],
+  declarations: [ AppComponent, DoorComponent, CalendarComponent, EditorComponent, FrontComponent, EditorDoorComponent, EditorFrontComponent, CalendarModal],
 
   bootstrap: [ AppComponent ]
 })

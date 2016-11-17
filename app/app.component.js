@@ -10,11 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var calendar_service_1 = require("./services/calendar.service");
+var router_1 = require('@angular/router');
+require('rxjs/add/operator/filter');
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(router) {
+        this.router = router;
         this.errorMessage = '';
     }
     AppComponent.prototype.ngOnInit = function () {
+        this.router.events.filter(function (event) { return event instanceof router_1.NavigationEnd; }).subscribe(function (event) {
+            window.scroll(0, 0);
+        });
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -23,7 +29,7 @@ var AppComponent = (function () {
             templateUrl: 'app.component.html',
             providers: [calendar_service_1.CalendarService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());
