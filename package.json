@@ -1,11 +1,11 @@
 {
-  "name": "product-management",
+  "name": "Christmas Calendar",
   "version": "1.0.0",
   "engines": {
     "node": "6.7.0"
   },
-  "author": "Deborah Kurata",
-  "description": "Package for the Acme Product Management sample application",
+  "author": "Bjørn Arve Lagim",
+  "description": "Small advent calendar for groups with custom setup for prizes",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "tsc": "tsc",

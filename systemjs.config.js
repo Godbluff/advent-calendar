@@ -38,8 +38,7 @@
       rxjs: {
         defaultExtension: 'js'
       },
-      "ng2-popover": { "main": "index.js", "defaultExtension": "js" },
-      'ng-lightning/ng-lightning': 'https://unpkg.com/ng-lightning@1.0.1/bundles/ng-lightning.umd.js'
+      "ng2-popover": { "main": "index.js", "defaultExtension": "js" }
     }
   });
 })(this);
