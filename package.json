@@ -4,7 +4,7 @@
   "engines": {
     "node": "6.7.0"
   },
-  "author": "Bjørn Arve Lagim",
+  "author": "Deborah Kurata",
   "description": "Package for the Acme Product Management sample application",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
