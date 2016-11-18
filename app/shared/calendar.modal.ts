@@ -11,16 +11,18 @@ export class CalendarModal {
     opened: boolean = false;
     size: string;
 
-    noHeader: boolean = true;
+    noHeader: boolean = false;
     noFooter: boolean = false;
     directional: boolean = false;
     mainText: string = '';
     modalImage: string = 'http://www.stoltzimage.com/images/white-box-with-bow.jpg';
-    prizeText: '';
+    prizeText: string =  '';
+    doorNumber: number = null;
 
-    open(size?: string, bodyText?: string, prizeText?: string) {
+    open(size?: string, bodyText?: string, prizeText?: string, doorNumber?: number) {
         this.mainText = bodyText;
-        this.prize = prizeText;
+        this.prizeText = prizeText;
+        this.doorNumber = doorNumber;
         console.log(bodyText);
         this.size = size;
         this.opened = !this.opened;
