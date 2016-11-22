@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers} from '@angular/http';
+import { Http, Headers, RequestOptions, Response} from '@angular/http';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
 export class EditorService {
-    participants: any = [
+    calendarUrl: string = 'http://juleluka-api.herokuapp.com/edit/calendar';
+    calendar: any = {};
+
+   participants: any = [
         { id: 1234, name: "Harry"},
         { id: 1234, name: "Anine"},
         { id: 1234, name: "Peretoia"},
         { id: 1234, name: "Vamsen"},
         { id: 1234, name: "Lotomar"},
     ];
-    calendar: any = [];
+
     doorSequence: any = [
     1,
     5,
@@ -111,18 +116,82 @@ export class EditorService {
         },
         {
             number: 24,
-        },
+        }
     ];
 
     private headers = new Headers({'Content-Type': 'application/json'});
     private _calendarUrl = 'api/calendardata/calendardata.json';
 
-    constructor(private _http: Http){}
+    constructor(private http: Http, private _router: Router){}
 
-    getCalendar(): Promise<void>{
-        console.log('Doing GET calendar');
-        return this._http.get(this._calendarUrl)
+    createCalendar(companyName: string, adminPassword: string){
+        this.calendar = {};
+        let body = {"companyName": companyName, "adminPassword": adminPassword};
+        let header = new Headers({'Content-Type': 'application/json' });
+        this.http.post(this.calendarUrl, body, header)
             .toPromise()
-            .then(response => response.json().data).catch(error => console.log(error));
+            .then(Response => {
+                Response.json();
+                console.log('Got id: ' + Response.json().id);
+                this.calendar = Response.json();
+                console.log(this.calendar);
+                this.calendar.password = adminPassword;})
+            .then(() => {this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...')})
+            .catch(error => console.log(error));
+
     }
+
+    editCalendar(companyName: string, password: string){
+        let body: string =  this.calendarUrl + '/auth?companyName=' + companyName + '&password=' + password;
+        this.http.post(body)
+            .toPromise()
+            .then((Response: any) => { 
+                this.calendar.authToken = Response.json().authToken;
+                this.getEditableCalendar(this.calendar.authToken);
+                localStorage.setItem('CCUser', JSON.stringify({ token: this.calendar.authToken }));
+            })
+            .catch((error: any) => console.log(error));
+
+        }
+
+    getEditableCalendar(token : string){
+        let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': token});
+        this.http.get(this.calendarUrl, {headers: headers})
+            .toPromise()
+            .then((Response: any) => {
+                console.log(Response.json());
+                this.calendar = Response.json();
+            })
+            .then(() => {this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...')})
+            .catch((error: any) => console.log(error));
+    }
+
+    updateDoor(door: any){
+        let header: any = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': this.calendar.authToken});
+        let body: any = this.calendar.doors[door];
+        this.http.put(this.calendarUrl, header, body)
+            .toPromise()
+            .then((Response: any) => {console.log(Response.json())})
+            .catch((error: any) => console.log(error));
+    }
+
+    insertParticipant(participantName: string, token: string){
+        console.log(this.calendar.authToken);
+        let body = {"name": participantName};
+        let targetUrl = this.calendarUrl + '/participants';
+        let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': token});
+        console.log(participantName, targetUrl, headers);
+        this.http.post(targetUrl,body, headers)
+            .toPromise()
+            .then((Response: any) => {console.log(Response.json())})
+            .catch((error: any) => console.log(error));
+    }
+
+    deleteParticipant(participantName: string){
+        let body = {"name": participantName};
+        let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': this.calendar.authToken});
+        this.http.post(this.calendarUrl, body, headers)
+    }
+
+
 }

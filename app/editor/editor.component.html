@@ -53,7 +53,7 @@
     </div>
 
     <div class="col-md-4" style="text-align: center;">
-        <div *ngFor="let door of editorService.doors; let i = index" (click)="showDoorData(i)" [class.selected]="highlightStatus[i]" class="door-select">{{i+1}}</div>
+        <div *ngFor="let door of editorService.calendar.doors; let i = index" (click)="showDoorData(i)" [class.selected]="highlightStatus[i]" class="door-select">{{i+1}}</div>
         <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">Select a calendar entry to edit it.</div>
         <div [routerLink]="['/calendar']" fragment="top" class="btn btn-success" style="width: 80%; margin-top: 20px;"
              popover="This will freeze the calendar and show you the calendar view. You can log back in to edit later."
@@ -64,7 +64,7 @@
 
     <div class="col-md-12 participants-container">
         <div style="font-size: 18px;margin-bottom: 10px;">Participiants</div>
-        <div *ngFor="let person of this.editorService.participants; let i = index" class="btn btn-default" style="min-width: 120px; text-align: left; margin-right: 2px;">{{person.name}}<div (click)="removeParticipant(i)" style="margin-left: 10px;" class="glyphicon glyphicon-remove" style="float: right; line-height: 18px; color: red; cursor: pointer;" popover="Remove participant."
+        <div *ngFor="let person of this.editorService.calendar.participants; let i = index" class="btn btn-default" style="min-width: 120px; text-align: left; margin-right: 2px;">{{person.name}}<div (click)="removeParticipant(i)" style="margin-left: 10px;" class="glyphicon glyphicon-remove" style="float: right; line-height: 18px; color: red; cursor: pointer;" popover="Remove participant."
                                                                                                                                                                                               popoverPlacement="top"
                                                                                                                                                                                               [popoverOnHover]="true"
                                                                                                                                                                                               [popoverAnimation]="true"></div></div>

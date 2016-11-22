@@ -11,19 +11,19 @@
     </div>
     <div class="col-sm-4" style="text-align: center;">
         <div class="input-header">Calendar Name</div>
-        <input class="front-input" placeholder="Place Of Business" style="width: 90%; color: black" [(ngModel)]="companyName"
+        <input class="front-input" placeholder="Place Of Business" style="width: 90%; color: white" [(ngModel)]="companyName"
                popover="Type in the name of the calendar you want to check."
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
         <br/><br/>
         <div class="input-header">Administrator Password</div>
-        <input class="front-input"  placeholder="Type Name Right Here" style="width: 90%;" [(ngModel)]="password"
+        <input class="front-input"  placeholder="Type Name Right Here" style="width: 90%;" [(ngModel)]="adminPassword"
                popover="Type the administrator password for the calendar in order to edit it."
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
-        <div [routerLink]="['/editor']" class="btn btn-success" style="width: 90%; margin-top: 20px;"
+        <div class="btn btn-success" style="width: 90%; margin-top: 20px;" (click)="this.editorService.createCalendar(companyName, adminPassword)"
              popover="This will create a new calendar with the entered name and password. NOTE DOWN THE PASSWORD. There is no recovery for it."
              popoverPlacement="bottom"
              [popoverOnHover]="true"
@@ -31,4 +31,25 @@
 
     </div>
     <div class="col-sm-4" style="text-align: center;"><img src="http://www.freeiconspng.com/uploads/christmas-tree-png-19.png" width="100%"/></div>
+    <div class="col-sm-12" style="text-align: center;">
+        <div class="input-header">Calendar Name</div>
+        <input class="front-input" placeholder="Place Of Business" style="width: 90%; color: white" [(ngModel)]="companyName2"
+               popover="Type in the name of the calendar you want to check."
+               popoverPlacement="bottom"
+               [popoverOnHover]="true"
+               [popoverAnimation]="true"/>
+        <br/><br/>
+        <div class="input-header">Administrator Password</div>
+        <input class="front-input"  placeholder="Type Name Right Here" style="width: 90%;" [(ngModel)]="adminPassword2"
+               popover="Type the administrator password for the calendar in order to edit it."
+               popoverPlacement="bottom"
+               [popoverOnHover]="true"
+               [popoverAnimation]="true"/>
+        <div class="btn btn-success" style="width: 90%; margin-top: 20px;" (click)="this.editorService.editCalendar(companyName2, adminPassword2)"
+             popover="This will create a new calendar with the entered name and password. NOTE DOWN THE PASSWORD. There is no recovery for it."
+             popoverPlacement="bottom"
+             [popoverOnHover]="true"
+             [popoverAnimation]="true">Initiate Calendar</div>
+
+    </div>
 </div>

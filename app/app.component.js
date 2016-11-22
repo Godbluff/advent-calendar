@@ -8,29 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const calendar_service_1 = require("./services/calendar.service");
-const router_1 = require('@angular/router');
+var core_1 = require('@angular/core');
+var calendar_service_1 = require("./services/calendar.service");
+var router_1 = require('@angular/router');
 require('rxjs/add/operator/filter');
-let AppComponent = class AppComponent {
-    constructor(router) {
+var AppComponent = (function () {
+    function AppComponent(router) {
         this.router = router;
         this.errorMessage = '';
     }
-    ngOnInit() {
-        this.router.events.filter(event => event instanceof router_1.NavigationEnd).subscribe(event => {
+    AppComponent.prototype.ngOnInit = function () {
+        this.router.events.filter(function (event) { return event instanceof router_1.NavigationEnd; }).subscribe(function (event) {
             window.scroll(0, 0);
         });
-    }
-};
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'ca-app',
-        moduleId: module.id,
-        templateUrl: 'app.component.html',
-        providers: [calendar_service_1.CalendarService]
-    }), 
-    __metadata('design:paramtypes', [router_1.Router])
-], AppComponent);
+    };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'ca-app',
+            moduleId: module.id,
+            templateUrl: 'app.component.html',
+            providers: [calendar_service_1.CalendarService]
+        }), 
+        __metadata('design:paramtypes', [router_1.Router])
+    ], AppComponent);
+    return AppComponent;
+}());
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

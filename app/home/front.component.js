@@ -8,19 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-let FrontComponent = class FrontComponent {
-    constructor() {
+var core_1 = require('@angular/core');
+var FrontComponent = (function () {
+    function FrontComponent() {
         this.pageTitle = 'Welcome';
     }
-};
-FrontComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        templateUrl: 'front.component.html',
-        styleUrls: ['front.component.css']
-    }), 
-    __metadata('design:paramtypes', [])
-], FrontComponent);
+    FrontComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            templateUrl: 'front.component.html',
+            styleUrls: ['front.component.css']
+        }), 
+        __metadata('design:paramtypes', [])
+    ], FrontComponent);
+    return FrontComponent;
+}());
 exports.FrontComponent = FrontComponent;
 //# sourceMappingURL=front.component.js.map

@@ -15,6 +15,8 @@ import { FrontComponent } from "./home/front.component";
 import { EditorDoorComponent } from "./editor/doors/editor.door.component";
 import { EditorFrontComponent } from "./editor/editor.front.component";
 import { CalendarModal } from "./shared/calendar.modal";
+import { EditorGuardDetail } from './editor/editor.guard.service';
+import {EditorService} from "./editor/editor.service";
 
 
 
@@ -23,7 +25,8 @@ import { CalendarModal } from "./shared/calendar.modal";
   imports: [ BrowserModule, HttpModule, FormsModule, NglModule.forRoot(), PopoverModule, RouterModule.forRoot([
     { path: 'calendar', component: CalendarComponent },
     { path: 'editor-front', component: EditorFrontComponent },
-    { path: 'editor', component: EditorComponent },
+    { path: 'editor',
+      component: EditorComponent },
     { path: 'home', component: FrontComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: '**', redirectTo: 'home', pathMatch: 'full'}
@@ -32,6 +35,8 @@ import { CalendarModal } from "./shared/calendar.modal";
 
   declarations: [ AppComponent, DoorComponent, CalendarComponent, EditorComponent, FrontComponent, EditorDoorComponent, EditorFrontComponent, CalendarModal],
 
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+
+  providers: [ EditorGuardDetail, EditorService ]
 })
 export class AppModule { }
