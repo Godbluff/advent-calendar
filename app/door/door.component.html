@@ -3,7 +3,10 @@
         <img class="image" src="https://www.jukeboxprint.com/images/3d-embossed-black-business-card.jpg" (click)="door.open(small, doorQuote, prize, doorNumber)"/>
     </div></div>
     <div (click)="toggleDoor()"  class="{{doorOpen ? 'card card-open' : 'card'}}" style="position: absolute;">
-        <div class="face front" id="front" [style.backgroundPosition]="bgPos">{{doorNumber}}</div>
+        <div class="face front" id="front" [style.backgroundPosition]="bgPos">
+            {{doorNumber}}
+            <div class="loader" id="loader-{{doorNumber}}" [style.display]="loaderVisible"></div>
+        </div>
         <div class="face back">{{doorQuote}}</div>
     </div>
 </div>

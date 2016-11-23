@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Http, Headers, RequestOptions, Response} from '@angular/http';
 import {CalendarModal} from "../shared/calendar.modal";
+import {CalendarService} from "../services/calendar.service";
 
 @Component({
 
@@ -20,8 +22,9 @@ export class DoorComponent {
     cardClass: string = 'card';
     doorOpen: boolean = false;
     bgPos: string = '';
+    loaderVisible: string = 'none';
 
-    constructor(){}
+    constructor(public calendarService : CalendarService, private http: Http){}
 
     ngOnInit(): void { }
 
@@ -42,8 +45,17 @@ export class DoorComponent {
     }
 
     toggleDoor(): void {
-        console.log(this.prize);
-        this.doorOpen = !this.doorOpen;
+        this.loaderVisible = 'block';
+        let targetUrl = 'http://juleluka-api.herokuapp.com/calendar/doors/' + this.doorNumber + '/open';
+        let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'X-Participant': this.calendarService.userToken});
+        this.http.post(targetUrl,'', {headers: headers})
+            .toPromise()
+            .then((Response: any) => {console.log(Response.json());})
+            .then(() => {
+                this.doorOpen = !this.doorOpen;
+                this.loaderVisible = 'none';
+            })
+            .catch((error: any) => console.log(error));
     }
 
 }

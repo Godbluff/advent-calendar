@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import { ICalendar } from "../calendar";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -8,17 +9,37 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CalendarService {
-    private _calendarUrl = 'api/calendardata/calendardata.json';
+    calendarUrl: string = 'http://juleluka-api.herokuapp.com/calendar';
+    userCalendar: any = {};
+    userToken: string = '';
 
-    constructor(private _http: Http) {
+    constructor(private http: Http, private router: Router) {
     }
 
-    getCalendar(): Observable<ICalendar>{
+    getCalendar(companyName: string, participantName: string): void {
+        let headers = new Headers({'Content-type': 'application/json'});
+        let targetUrl: string  = 'http://juleluka-api.herokuapp.com/calendar/participant/lookup?companyName=' + companyName + '&participantName=' + participantName;
+        this.http.get(targetUrl, {headers: headers})
+            .toPromise()
+            .then((Response: any) => {
+                this.userToken = Response.json().token;
+            })
+            .then(()=> this.openCalendar(this.userToken))
+            .catch((error: any) => console.log(error));
+    }
 
-        return this._http.get(this._calendarUrl)
-            .map((response: Response) => <ICalendar[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);
+    openCalendar(token: string){
+        let headers: any = new Headers({'Accept': 'application/json', 'X-Participant' : token});
+        this.http.get(this.calendarUrl, {headers: headers})
+            .toPromise()
+            .then((Response: any) => {
+                this.userCalendar = Response.json();
+            })
+            .then(() => {
+                this.userCalendar.doorSequence.length === 24 ? this.router.navigate(['/calendar']) : 'Seems the data is not in place.';
+                console.log(this.userCalendar);
+            })
+            .catch((error: any) => console.log(error));
     }
 
     private handleError(error: Response) {

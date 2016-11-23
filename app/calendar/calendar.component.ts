@@ -9,8 +9,7 @@ import { EditorService } from "../editor/editor.service";
     selector: 'pm-app',
     moduleId: module.id,
     templateUrl: 'calendar.component.html',
-    styleUrls: ['calendar.component.css'],
-    providers: [ CalendarService, EditorService ]
+    styleUrls: ['calendar.component.css']
 })
 
 
@@ -147,7 +146,7 @@ export class CalendarComponent {
     }]
         ;
     errorMessage: string = '';
-    constructor(private _calendarService: CalendarService, private editorService: EditorService) {
+    constructor(public calendarService: CalendarService) {
 
     }
 

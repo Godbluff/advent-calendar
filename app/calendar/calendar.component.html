@@ -1,9 +1,9 @@
 <div class="christmasbg">
 
-    <div class="calendar-header">{{calendar[0].calendarTitle}}</div>
+    <div class="calendar-header">Julekalender for {{calendarService.userCalendar.companyName}}</div>
     <div class="calendar-border"></div>
     <div>{{errorMessage}}</div>
-    <cc-door *ngFor="let door of editorService.doorSequence; let i = index;" [doorNumber]="door" [doorQuote]="calendar[0].doorContent[door-1].quote" [containerId]="'number-' + door" [prize]="calendar[0].doorContent[door-1].prize"></cc-door>
+    <cc-door *ngFor="let door of calendarService.userCalendar.doorSequence; let i = index;" [doorNumber]="door"  [containerId]="'number-' + door" ></cc-door>
     <div class="link">
         <a [routerLink]="['/']">Front Page</a><br/>
         <a [routerLink]="['/editor']">Editor</a>

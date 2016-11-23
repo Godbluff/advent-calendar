@@ -7,13 +7,13 @@
 
 
     <div class="col-md-8" style="text-align: center;">
-
-        <input class="edit-input" placeholder="Company name"
+        <div class="col-md-6">
+        <input class="edit-input" placeholder="Company name" [(ngModel)]="this.editorService.calendar.companyName"
                popover="The Heading on the calendar will be 'The <company name> Advent Calendar'."
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
-        <input class="edit-input" placeholder="Calendar Background Url"
+        <input class="edit-input" placeholder="Calendar Background Url" [(ngModel)]="this.editorService.calendar.bgUrl"
                popover="If you do not wich to use the default background, enter a valid URL for another image and it will be used instead."
                popoverPlacement="bottom"
                [popoverOnHover]="true"
@@ -23,31 +23,58 @@
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
+        </div>
+        <div class="col-md-6">
+            <input class="edit-input" placeholder="Company Logo URL"[(ngModel)]="this.editorService.calendar.logoUrl"
+                   popover="To add the logo of your company to the calendar, paste in a URL to the image here."
+                   popoverPlacement="bottom"
+                   [popoverOnHover]="true"
+                   [popoverAnimation]="true"/>
+            <input class="edit-input" placeholder="administrator e-mail" [(ngModel)]="this.editorService.calendar.contactEmail"
+                   popover="Insert e-mail for password retrieval."
+                   popoverPlacement="bottom"
+                   [popoverOnHover]="true"
+                   [popoverAnimation]="true">
+            <input class="edit-input" placeholder="Winners Per Day" value="1" [(ngModel)]="this.editorService.calendar.winnersPerDay"
+                   popover="If you have more than one winner per day, insert the number here. This is added to all doors."
+                   popoverPlacement="bottom"
+                   [popoverOnHover]="true"
+                   [popoverAnimation]="true"/>
+        </div>
+        <div class="col-md-12">
+            <div class="btn btn-success col-md-6" style="width: 80%; margin-top: 20px;" (click)="this.editorService.updateFullCalendar()">Update Calendar</div>
+            <div class="btn btn-success col-md-6" style="width: 80%; margin-top: 20px;" (click)="this.editorService.unlockCalendar()">Make Doors Available</div>
+        </div>
 
-        <div class="door-edit-container">
+        <div class="door-edit-container col-md-12">
             <div style="font-size: 18px;">Edit Door Number: {{selectedDoor.number}}</div>
-            <input  class="edit-input" placeholder="The Prize" [(ngModel)]="selectedDoor.prize" (keyup)="updateEntry('prize')" (blur)="doorCheck()"
+            <div class="col-md-9">
+                <input  class="edit-input" placeholder="The Prize" [(ngModel)]="selectedDoor.prize" (keyup)="updateEntry('prize')" (blur)="doorCheck()"
                     popover="Enter the prize to be handed out on December {{selectedDoor.number}}."
                     popoverPlacement="bottom"
                     [popoverOnHover]="true"
                     [popoverAnimation]="true"/>
-            <input class="edit-input" placeholder="Prize Image - Optional" [(ngModel)]="selectedDoor.imageUrl" (keyup)="updateEntry('imageUrl')" (keyup.enter)="enterToTab()"
+                <input class="edit-input" placeholder="Prize Image - Optional" [(ngModel)]="selectedDoor.imageUrl" (keyup)="updateEntry('imageUrl')" (keyup.enter)="enterToTab()"
                    popover="Optional image URL for the prize on December {{selectedDoor.number}}. If nothing is entered, the default image is used."
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
-            <input class="edit-input" placeholder="A Memorable Quote." [(ngModel)]="selectedDoor.quote" (keyup)="updateEntry('quote')"
+                <input class="edit-input" placeholder="A Memorable Quote." [(ngModel)]="selectedDoor.quote" (keyup)="updateEntry('quote')"
                    popover="Insert a short quote if you want."
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
-            <input class="edit-input" placeholder="Instructions: 'Pick up prize at...'" [(ngModel)]="selectedDoor.instructions" (keyup)="updateEntry('instructions')"
+                <input class="edit-input" placeholder="Instructions: 'Pick up prize at...'" [(ngModel)]="selectedDoor.instructions" (keyup)="updateEntry('instructions')"
                    popover="Tell your winning participants how to pick up their prize."
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
-            <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">This box saves everything, always.</div>
-            <img  *ngIf="this.selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="this.selectedDoor.imageUrl" style="max-width: 20%; float: right;"/>
+            </div>
+            <div class="col-md-3">
+                <img  *ngIf="this.selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="this.selectedDoor.imageUrl" style="max-width: 100%; max-height: 100%; float: right;"/>
+            </div>
+            <div class="col-md-12" style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">This box saves everything, always.</div>
+
         </div>
 
     </div>
@@ -60,6 +87,8 @@
              popoverPlacement="bottom"
              [popoverOnHover]="true"
              [popoverAnimation]="true">End Editing</div>
+        <div class="btn btn-danger" style="width: 80%; margin-top: 20px;" (click)="this.editorService.logCalendar()"
+             >console.log the calenedar</div>
     </div><br/>
 
     <div class="col-md-12 participants-container">

@@ -9,9 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var calendar_service_1 = require("../services/calendar.service");
 var FrontComponent = (function () {
-    function FrontComponent() {
+    function FrontComponent(calendarService) {
+        this.calendarService = calendarService;
         this.pageTitle = 'Welcome';
+        this.companyName = '';
+        this.participantName = '';
     }
     FrontComponent = __decorate([
         core_1.Component({
@@ -19,7 +23,7 @@ var FrontComponent = (function () {
             templateUrl: 'front.component.html',
             styleUrls: ['front.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [calendar_service_1.CalendarService])
     ], FrontComponent);
     return FrontComponent;
 }());

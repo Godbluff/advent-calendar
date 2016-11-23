@@ -31,6 +31,8 @@
 h3{
     font-family: "Emilys Candy";
     text-shadow: 2px 2px 5px black;
+    font-size: 32px;
+    margin-bottom:10px;
 }
 .link a {
     color: white;
@@ -61,4 +63,13 @@ input{
     text-shadow: 0px 0px 1px black;
     text-align: center;
     border-radius: 25px 25px 0px 0px;
+}
+
+.separator{
+    background: url('/app/assets/images/seprator.png') no-repeat center;
+    width: 150%;
+    height:25px;
+    background-size: contain;
+    margin-top: 10px;
+    margin-left: -25%;
 }

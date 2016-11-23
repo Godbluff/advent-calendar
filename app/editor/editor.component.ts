@@ -10,11 +10,12 @@ import { EditorService } from './editor.service';
 
 
 export class EditorComponent implements OnInit {
-    highlightStatus: Array<boolean> = [];
+    highlightStatus: Array<boolean> = [true];
     selectedDoor: any = {
     };
     newParticipant: string = '';
     calendar = {};
+    filled: any  = [];
 
     constructor(public editorService: EditorService) {
 
@@ -22,18 +23,16 @@ export class EditorComponent implements OnInit {
 
     ngOnInit(): void {
         let service = this.editorService;
-        console.log('Hello Editor.');
-        service.editCalendar(service.calendar.companyName, service.calendar.password);
+        service.calendar.id.length > 0 ? console.log('Got Calendar') : console.log('No Calendar');
         this.selectedDoor = service.calendar.doors[0];
 
 //        let retrievedToken = localStorage.getItem('CCUser');
 //        let parsedToken = JSON.parse(retrievedToken);
-//        service.getEditableCalendar(parsedToken);
+//        service.getEditableCalendar(parsedToken.token, 'editor component ngOnInit');
 
 
     }
     ngOnInitView(){
-        console.log(service.calendar.authToken ? 'Have now token to save' : 'Still no token to save.');
     }
 
     showDoorData(doorNr:any): void {
@@ -47,37 +46,42 @@ export class EditorComponent implements OnInit {
 
     addParticipant(name: any) {
         let service = this.editorService;
+        let token = service.authToken;
+        console.log(token);
         if (service.calendar.participants.filter((p: any) => p.name == this.newParticipant).length > 0) {
             this.newParticipant = 'Participant already added.';
             setTimeout(() => {this.newParticipant = ''},2000);
             console.log('Already in the participants list, dude!');
         }
-        else if(this.newParticipant.length >= 2) { service.calendar.participants.push({ id: 1234, name: name });
+        else if(this.newParticipant.length >= 2) { service.insertParticipant(name, token);
             this.newParticipant = '';}
-        service.insertParticipant(name, service.calendar.authToken);
 
     }
 
     removeParticipant(loc: number){
         let service = this.editorService;
-        let name = service.calendar.participants[loc].name;
+        let token = service.authToken;
+        let user = service.calendar.participants[loc].id;
         service.calendar.participants.splice(loc,1);
-        service.deleteParticipant(name);
+        service.deleteParticipant(user, token);
     }
 
     updateEntry(key: string){
         let service = this.editorService;
+        let door = this.selectedDoor.number;
         service.calendar.doors[this.selectedDoor.number-1][key] = this.selectedDoor[key];
+        console.log(service.calendar.doors[door-1]);
+        service.updateDoor(door-1);
     }
 
     doorCheck(){
-        this.selectedDoor.filled = [];
+        this.filled = [];
         ("prize" in this.selectedDoor)
             ? this.selectedDoor.prize.length > 5
-                ? this.selectedDoor.filled.push(1)
+                ? this.filled.push(1)
                 : ''
-            : this.selectedDoor.filled.slice(1);
-        console.log(this.selectedDoor.filled);
+            : this.filled.slice(1);
+        console.log(this.filled);
     }
 
 }

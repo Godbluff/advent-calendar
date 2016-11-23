@@ -7,8 +7,16 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class EditorService {
-    calendarUrl: string = 'http://juleluka-api.herokuapp.com/edit/calendar';
-    calendar: any = {};
+    private calendarUrl: string = 'http://juleluka-api.herokuapp.com/edit/calendar';
+    authToken: '';
+    calendar: any = {
+        doors: [
+            {
+                number: 1,
+            }
+        ]
+
+    };
 
    participants: any = [
         { id: 1234, name: "Harry"},
@@ -138,23 +146,22 @@ export class EditorService {
                 this.calendar.password = adminPassword;})
             .then(() => {this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...')})
             .catch(error => console.log(error));
-
     }
 
     editCalendar(companyName: string, password: string){
         let body: string =  this.calendarUrl + '/auth?companyName=' + companyName + '&password=' + password;
-        this.http.post(body)
+        this.http.post(body, '')
             .toPromise()
             .then((Response: any) => { 
-                this.calendar.authToken = Response.json().authToken;
-                this.getEditableCalendar(this.calendar.authToken);
-                localStorage.setItem('CCUser', JSON.stringify({ token: this.calendar.authToken }));
+                this.authToken = Response.json().authToken;
+                this.getEditableCalendar(this.authToken, 'editCalendar');
+                localStorage.setItem('CCUser', JSON.stringify({ token: this.authToken }));
             })
             .catch((error: any) => console.log(error));
-
         }
 
-    getEditableCalendar(token : string){
+    getEditableCalendar(token : string, message: string){
+        console.log('getting editable calendar via' + message);
         let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': token});
         this.http.get(this.calendarUrl, {headers: headers})
             .toPromise()
@@ -167,31 +174,51 @@ export class EditorService {
     }
 
     updateDoor(door: any){
-        let header: any = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': this.calendar.authToken});
+        console.log(door);
+        let header: any = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization': this.authToken});
+        let targetUrl = this.calendarUrl + '/doors/' + (door+1);
         let body: any = this.calendar.doors[door];
-        this.http.put(this.calendarUrl, header, body)
+        this.calendar.doors[door].number === (door+1) ? console.log('Numbers match up.') : console.log('Door Number mismatch');
+        this.http.put(targetUrl, body, {headers: header})
             .toPromise()
-            .then((Response: any) => {console.log(Response.json())})
+            .then((Response: any) => {console.log(Response.status)})
             .catch((error: any) => console.log(error));
     }
 
     insertParticipant(participantName: string, token: string){
-        console.log(this.calendar.authToken);
         let body = {"name": participantName};
         let targetUrl = this.calendarUrl + '/participants';
         let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': token});
-        console.log(participantName, targetUrl, headers);
-        this.http.post(targetUrl,body, headers)
+        this.http.post(targetUrl,body, {headers: headers})
+            .toPromise()
+            .then((Response: any) => {console.log(Response.json()); this.calendar.participants.push(Response.json());})
+            .catch((error: any) => console.log(error));
+    }
+
+    deleteParticipant(userId: string, token: string){
+        let targetUrl = this.calendarUrl + '/participants/' + userId;
+        let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': token});
+        this.http.delete(targetUrl, {headers: headers})
+            .toPromise()
+            .then((Response: any) => {console.log('Deleted Participant? ' + Response.ok)})
+            .catch((error: any) => console.log(error));
+    }
+
+    logCalendar(){
+        console.log(this.calendar);
+    }
+
+    updateFullCalendar(){
+        let body = this.calendar;
+        let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': this.authToken});
+        this.http.put(this.calendarUrl, body, {headers: headers})
             .toPromise()
             .then((Response: any) => {console.log(Response.json())})
             .catch((error: any) => console.log(error));
     }
 
-    deleteParticipant(participantName: string){
-        let body = {"name": participantName};
-        let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': this.calendar.authToken});
-        this.http.post(this.calendarUrl, body, headers)
+    unlockCalendar(){
+        this.calendar.doorsAlwaysAvailable = !this.calendar.doorsAlwaysAvailable;
+        console.log('Doors Open? ' + this.calendar.doorsAlwaysAvailable);
     }
-
-
 }

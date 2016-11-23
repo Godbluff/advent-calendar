@@ -25,6 +25,7 @@ var editor_front_component_1 = require("./editor/editor.front.component");
 var calendar_modal_1 = require("./shared/calendar.modal");
 var editor_guard_service_1 = require('./editor/editor.guard.service');
 var editor_service_1 = require("./editor/editor.service");
+var calendar_service_1 = require("./services/calendar.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,7 +42,7 @@ var AppModule = (function () {
                 ])],
             declarations: [app_component_1.AppComponent, door_component_1.DoorComponent, calendar_component_1.CalendarComponent, editor_component_1.EditorComponent, front_component_1.FrontComponent, editor_door_component_1.EditorDoorComponent, editor_front_component_1.EditorFrontComponent, calendar_modal_1.CalendarModal],
             bootstrap: [app_component_1.AppComponent],
-            providers: [editor_guard_service_1.EditorGuardDetail, editor_service_1.EditorService]
+            providers: [editor_guard_service_1.EditorGuardDetail, editor_service_1.EditorService, calendar_service_1.CalendarService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

@@ -16,7 +16,8 @@ import { EditorDoorComponent } from "./editor/doors/editor.door.component";
 import { EditorFrontComponent } from "./editor/editor.front.component";
 import { CalendarModal } from "./shared/calendar.modal";
 import { EditorGuardDetail } from './editor/editor.guard.service';
-import {EditorService} from "./editor/editor.service";
+import { EditorService } from "./editor/editor.service";
+import { CalendarService } from "./services/calendar.service";
 
 
 
@@ -37,6 +38,6 @@ import {EditorService} from "./editor/editor.service";
 
   bootstrap: [ AppComponent ],
 
-  providers: [ EditorGuardDetail, EditorService ]
+  providers: [ EditorGuardDetail, EditorService, CalendarService ]
 })
 export class AppModule { }
