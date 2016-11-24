@@ -21,7 +21,10 @@ export class CalendarComponent {
     }
 
     ngOnInit(): void {
-
+        let retrievedToken = localStorage.getItem('CCParticipant');
+        let parsedToken = JSON.parse(retrievedToken);
+        this.calendarService.openCalendar(parsedToken.token);
+        this.calendarService.userToken = parsedToken.token;
     }
 
 }

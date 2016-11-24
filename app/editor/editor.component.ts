@@ -21,13 +21,13 @@ export class EditorComponent implements OnInit {
 
     ngOnInit(): void {
         let service = this.editorService;
-        service.calendar.id.length > 0 ? console.log('Got Calendar') : console.log('No Calendar');
-        this.selectedDoor = service.calendar.doors[0];
+        //service.calendar.id.length > 0 ? console.log('Got Calendar') : console.log('No Calendar');
+        //this.selectedDoor = service.calendar.doors[0];
 
 //        LocalStorage for retrieval after refresh.
-//        let retrievedToken = localStorage.getItem('CCUser');
-//        let parsedToken = JSON.parse(retrievedToken);
-//        service.getEditableCalendar(parsedToken.token, 'editor component ngOnInit');
+        let retrievedToken = localStorage.getItem('CCUser');
+        let parsedToken = JSON.parse(retrievedToken);
+        service.getEditableCalendar(parsedToken.token, 'editor component ngOnInit');
 
     }
 
