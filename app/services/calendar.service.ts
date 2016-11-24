@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CalendarService {
-    calendarUrl: string = 'http://juleluka-api.herokuapp.com/calendar';
+    calendarUrl: string = 'https://juleluka-api.herokuapp.com/calendar';
     userCalendar: any = {};
     userToken: string = '';
     loaderVisible: string = 'none';
@@ -20,7 +20,7 @@ export class CalendarService {
     getCalendar(companyName: string, participantName: string): void {
         this.loaderVisible = 'block';
         let headers = new Headers({'Content-type': 'application/json'});
-        let targetUrl: string  = 'http://juleluka-api.herokuapp.com/calendar/participant/lookup?companyName=' + companyName + '&participantName=' + participantName;
+        let targetUrl: string  = 'https://juleluka-api.herokuapp.com/calendar/participant/lookup?companyName=' + companyName + '&participantName=' + participantName;
         this.http.get(targetUrl, {headers: headers})
             .toPromise()
             .then((Response: any) => {
