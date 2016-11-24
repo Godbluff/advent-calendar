@@ -58,6 +58,15 @@
     color: black;
     font-size: 10px;
 }
+.back p{
+    position: relative;
+    top: 50%;
+    line-height: 1.5em;
+    padding: 10px;
+    -webkit-transform: perspective(1px) translateY(-50%);
+    -ms-transform: perspective(1px) translateY(-50%);
+    transform: perspective(1px) translateY(-50%);
+}
 
 .card-open {
     -webkit-transform: rotateY(180deg);
@@ -68,7 +77,6 @@
     position: absolute;
     top: 0px; left: 0px;
     height: 100%; width: 100%;
-    background: multiply;
     background-size: cover;
     mix-blend-mode: multiply;
 }

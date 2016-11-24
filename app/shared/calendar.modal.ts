@@ -14,16 +14,20 @@ export class CalendarModal {
     noHeader: boolean = false;
     noFooter: boolean = false;
     directional: boolean = false;
-    mainText: string = '';
+    instructionText: string = '';
     modalImage: string = 'http://www.stoltzimage.com/images/white-box-with-bow.jpg';
     prizeText: string =  '';
     doorNumber: number = null;
+    win: boolean = false;
+    outcomeText: string = '';
 
-    open(size?: string, bodyText?: string, prizeText?: string, doorNumber?: number, imageUrl: string) {
-        this.mainText = bodyText;
+    open(size?: string, prizeText?: string, doorNumber?: number, instructionText, imageUrl: string, win: boolean) {
+        this.win = win;
         this.prizeText = prizeText;
         this.doorNumber = doorNumber;
+        this.instructionText = instructionText;
         this.modalImage = imageUrl;
+        win ? this.outcomeText =  'Gratulerer! Du har vunnet!' : this.outcomeText = 'Dessverre. Du vant ikke i dag';
         this.size = size;
         this.opened = !this.opened;
 

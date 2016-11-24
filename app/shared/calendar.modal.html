@@ -1,9 +1,11 @@
 <ngl-modal [header]="noHeader ? '' : doorNumber + '. desember'" [(open)]="opened" [size]="size" [directional]="directional" style="color: black;">
     <div body style="color: black;">
         <img src="{{modalImage}}" style="height: 100px; float: right;"/>
-        <p>{{mainText}}</p>
+        <h2>{{outcomeText}}</h2>
+        <h5>Dagens premie {{win ? 'er:' : 'var:'}}</h5>
         <p>{{prizeText}}</p>
-        <p>{{instructions}}</p>
+        <br/><br/>
+        <p style="font-style: italic;">{{instructionText}}</p>
     </div>
     <template ngl-modal-footer *ngIf="!noFooter">
         <button class="slds-button slds-button--destructive" (click)="cancel()">Close</button>
