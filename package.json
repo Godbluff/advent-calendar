@@ -7,6 +7,7 @@
   "author": "Deborah Kurata",
   "description": "Package for the Acme Product Management sample application",
   "scripts": {
+    "postinstall": "typings install",
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
