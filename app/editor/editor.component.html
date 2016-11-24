@@ -1,19 +1,18 @@
 <div class="editorbg">
     <div class="calendar-header">Calendar Editor<div class="calendar-border"></div></div>
     <div class="link">
-        <a [routerLink]="['/']">Front Page</a><br/>
-        <a [routerLink]="['/calendar']">Calendar</a>
+        <div [routerLink]="['/']" class="glyphicon glyphicon-home icon-link"></div>
     </div>
 
 
     <div class="col-md-8" style="text-align: center;">
         <div class="col-md-6">
-        <input class="edit-input" placeholder="Company name" [(ngModel)]="this.editorService.calendar.companyName"
+        <input class="edit-input" placeholder="Company name" [(ngModel)]="editorService.calendar.companyName"
                popover="The Heading on the calendar will be 'The <company name> Advent Calendar'."
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
-        <input class="edit-input" placeholder="Calendar Background Url" [(ngModel)]="this.editorService.calendar.bgUrl"
+        <input class="edit-input" placeholder="Calendar Background Url" [(ngModel)]="editorService.calendar.bgUrl"
                popover="If you do not wich to use the default background, enter a valid URL for another image and it will be used instead."
                popoverPlacement="bottom"
                [popoverOnHover]="true"
@@ -25,25 +24,25 @@
                [popoverAnimation]="true"/>
         </div>
         <div class="col-md-6">
-            <input class="edit-input" placeholder="Company Logo URL"[(ngModel)]="this.editorService.calendar.logoUrl"
+            <input class="edit-input" placeholder="Company Logo URL"[(ngModel)]="editorService.calendar.logoUrl"
                    popover="To add the logo of your company to the calendar, paste in a URL to the image here."
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
-            <input class="edit-input" placeholder="administrator e-mail" [(ngModel)]="this.editorService.calendar.contactEmail"
+            <input class="edit-input" placeholder="administrator e-mail" [(ngModel)]="editorService.calendar.contactEmail"
                    popover="Insert e-mail for password retrieval."
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true">
-            <input class="edit-input" placeholder="Winners Per Day" value="1" [(ngModel)]="this.editorService.calendar.winnersPerDay"
+            <input class="edit-input" placeholder="Winners Per Day" value="1" [(ngModel)]="editorService.calendar.winnersPerDay"
                    popover="If you have more than one winner per day, insert the number here. This is added to all doors."
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
         </div>
         <div class="col-md-12">
-            <div class="btn btn-success col-md-6" style="width: 80%; margin-top: 20px;" (click)="this.editorService.updateFullCalendar()">Update Calendar</div>
-            <div class="btn btn-success col-md-6" style="width: 80%; margin-top: 20px;" (click)="this.editorService.unlockCalendar()">Make Doors Available</div>
+            <div class="btn btn-success col-md-6" style="width: 80%; margin-top: 20px;" (click)="editorService.updateFullCalendar()">Update Calendar</div>
+            <div class="btn btn-success col-md-6" style="width: 80%; margin-top: 20px;" (click)="editorService.unlockCalendar()">Make Doors Available</div>
         </div>
 
         <div class="door-edit-container col-md-12">
@@ -71,7 +70,7 @@
                    [popoverAnimation]="true"/>
             </div>
             <div class="col-md-3">
-                <img  *ngIf="this.selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="this.selectedDoor.imageUrl" style="max-width: 100%; max-height: 100%; float: right;"/>
+                <img  *ngIf="selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="selectedDoor.imageUrl" style="max-width: 100%; max-height: 100%; float: right;"/>
             </div>
             <div class="col-md-12" style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">This box saves everything, always.</div>
 
@@ -82,18 +81,19 @@
     <div class="col-md-4" style="text-align: center;">
         <div *ngFor="let door of editorService.calendar.doors; let i = index" (click)="showDoorData(i)" [class.selected]="highlightStatus[i]" class="door-select">{{i+1}}</div>
         <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">Select a calendar entry to edit it.</div>
-        <div [routerLink]="['/calendar']" fragment="top" class="btn btn-success" style="width: 80%; margin-top: 20px;"
-             popover="This will freeze the calendar and show you the calendar view. You can log back in to edit later."
+        <div [routerLink]="['/']" fragment="top" class="btn btn-success" style="width: 80%; margin-top: 20px;"
+             popover="This will freeze the calendar and bring you back to the front page. You can log back in to edit later."
              popoverPlacement="bottom"
              [popoverOnHover]="true"
-             [popoverAnimation]="true">End Editing</div>
-        <div class="btn btn-danger" style="width: 80%; margin-top: 20px;" (click)="this.editorService.logCalendar()"
+             [popoverAnimation]="true"
+             (click)="editorService.updateFullCalendar()">End Editing</div>
+        <div class="btn btn-danger" style="width: 80%; margin-top: 20px;" (click)="editorService.logCalendar()"
              >console.log the calenedar</div>
     </div><br/>
 
     <div class="col-md-12 participants-container">
         <div style="font-size: 18px;margin-bottom: 10px;">Participiants</div>
-        <div *ngFor="let person of this.editorService.calendar.participants; let i = index" class="btn btn-default" style="min-width: 120px; text-align: left; margin-right: 2px;">{{person.name}}<div (click)="removeParticipant(i)" style="margin-left: 10px;" class="glyphicon glyphicon-remove" style="float: right; line-height: 18px; color: red; cursor: pointer;" popover="Remove participant."
+        <div *ngFor="let person of editorService.calendar.participants; let i = index" class="btn btn-default" style="min-width: 120px; text-align: left; margin-right: 2px;">{{person.name}}<div (click)="removeParticipant(i)" style="margin-left: 10px;" class="glyphicon glyphicon-remove" style="float: right; line-height: 18px; color: red; cursor: pointer;" popover="Remove participant."
                                                                                                                                                                                               popoverPlacement="top"
                                                                                                                                                                                               [popoverOnHover]="true"
                                                                                                                                                                                               [popoverAnimation]="true"></div></div>

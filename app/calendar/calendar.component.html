@@ -5,8 +5,7 @@
     <div>{{errorMessage}}</div>
     <cc-door *ngFor="let door of calendarService.userCalendar.doorSequence; let i = index;" [doorNumber]="door"  [containerId]="'number-' + door" ></cc-door>
     <div class="link">
-        <a [routerLink]="['/']">Front Page</a><br/>
-        <a [routerLink]="['/editor']">Editor</a>
+        <div [routerLink]="['/']" class="glyphicon glyphicon-home icon-link"></div>
     </div>
 
 </div>

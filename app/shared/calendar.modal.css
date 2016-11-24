@@ -4,3 +4,16 @@
 .slds-backdrop--open{
     background: none !important;
 }
+
+p {
+    font-size: 14px;
+    text-align: center;
+}
+
+p.top-header{
+    font-size: 24px;
+}
+p.sub-header{
+    font-size: 16px;
+    margin-bottom: 10px;
+}

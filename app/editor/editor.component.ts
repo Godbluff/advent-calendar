@@ -17,23 +17,20 @@ export class EditorComponent implements OnInit {
     calendar = {};
     filled: any  = [];
 
-    constructor(public editorService: EditorService) {
-
-    }
+    constructor(public editorService: EditorService) { }
 
     ngOnInit(): void {
         let service = this.editorService;
         service.calendar.id.length > 0 ? console.log('Got Calendar') : console.log('No Calendar');
         this.selectedDoor = service.calendar.doors[0];
 
+//        LocalStorage for retrieval after refresh.
 //        let retrievedToken = localStorage.getItem('CCUser');
 //        let parsedToken = JSON.parse(retrievedToken);
 //        service.getEditableCalendar(parsedToken.token, 'editor component ngOnInit');
 
+    }
 
-    }
-    ngOnInitView(){
-    }
 
     showDoorData(doorNr:any): void {
         let service = this.editorService;
@@ -44,10 +41,10 @@ export class EditorComponent implements OnInit {
         ("prize" in this.selectedDoor) && console.log('Got prize');
     }
 
+
     addParticipant(name: any) {
         let service = this.editorService;
         let token = service.authToken;
-        console.log(token);
         if (service.calendar.participants.filter((p: any) => p.name == this.newParticipant).length > 0) {
             this.newParticipant = 'Participant already added.';
             setTimeout(() => {this.newParticipant = ''},2000);
@@ -55,8 +52,8 @@ export class EditorComponent implements OnInit {
         }
         else if(this.newParticipant.length >= 2) { service.insertParticipant(name, token);
             this.newParticipant = '';}
-
     }
+
 
     removeParticipant(loc: number){
         let service = this.editorService;
@@ -66,13 +63,14 @@ export class EditorComponent implements OnInit {
         service.deleteParticipant(user, token);
     }
 
+
     updateEntry(key: string){
         let service = this.editorService;
         let door = this.selectedDoor.number;
         service.calendar.doors[this.selectedDoor.number-1][key] = this.selectedDoor[key];
-        console.log(service.calendar.doors[door-1]);
         service.updateDoor(door-1);
     }
+
 
     doorCheck(){
         this.filled = [];
