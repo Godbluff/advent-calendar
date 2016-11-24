@@ -19,7 +19,7 @@ export class FrontComponent {
         console.log(this.languageService.texts.no);
     }
 
-    switchLanguage(lang){
+    switchLanguage(lang: string){
         this.languageService.setLanguage = lang;
     }
 }

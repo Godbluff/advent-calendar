@@ -53,8 +53,7 @@ export class EditorService {
                 this.calendar = Response.json();
             })
             .then(() => {
-                this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...');
-                this.selectedDoor = this.calendar.doors[0];})
+                this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...');})
             .catch((error: any) => console.log(error));
     }
 
