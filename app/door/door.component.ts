@@ -22,7 +22,7 @@ export class DoorComponent {
     cardClass: string = 'card';
     doorOpen: boolean = false;
     bgPos: string = '';
-    loaderVisible: string = 'none';
+    private loaderVisible: string = 'none';
 
     constructor(public calendarService : CalendarService, private http: Http){}
 
@@ -55,7 +55,7 @@ export class DoorComponent {
                 this.doorOpen = !this.doorOpen;
                 this.loaderVisible = 'none';
             })
-            .catch((error: any) => console.log(error));
+            .catch((error: any) => {console.log(error); this.loaderVisible = 'none';});
     }
 
 }

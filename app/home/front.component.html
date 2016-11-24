@@ -28,7 +28,10 @@
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
-        <div class="btn btn-success" style="width: 80%; margin-top:20px;" (click)="this.calendarService.getCalendar(this.companyName, this.participantName)">Open Your Calendar</div>
+        <div class="btn btn-success" style="width: 80%; margin-top:20px; position: relative;" (click)="this.calendarService.getCalendar(this.companyName, this.participantName)">
+            <div class="timer" [style.display]="this.calendarService.loaderVisible"></div>Open Your Calendar
+        </div>
+
         <div class="separator"></div>
         <div [routerLink]="['/editor-front']" class="btn btn-success" style="width: 80%;">Create New Calendar</div>
         <div [routerLink]="['/editor-front']" class="btn btn-success" style="width: 80%; margin-top: 20px;">Administer Calendar</div>
