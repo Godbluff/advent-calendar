@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class EditorService {
-    private calendarUrl: string = 'http://juleluka-api.herokuapp.com/edit/calendar';
+    private calendarUrl: string = 'https://juleluka-api.herokuapp.com/edit/calendar';
     authToken: '';
     calendar: any = {
         doors: [

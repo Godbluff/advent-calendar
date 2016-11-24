@@ -53,7 +53,7 @@ export class DoorComponent {
 
     toggleDoor(): void {
         this.loaderVisible = 'block';
-        let targetUrl = 'http://juleluka-api.herokuapp.com/calendar/doors/' + this.doorNumber + '/open';
+        let targetUrl = 'https://juleluka-api.herokuapp.com/calendar/doors/' + this.doorNumber + '/open';
         let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'X-Participant': this.calendarService.userToken});
         this.http.post(targetUrl,'', {headers: headers})
             .toPromise()
