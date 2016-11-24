@@ -19,13 +19,14 @@ export class CalendarModal {
     prizeText: string =  '';
     doorNumber: number = null;
 
-    open(size?: string, bodyText?: string, prizeText?: string, doorNumber?: number) {
+    open(size?: string, bodyText?: string, prizeText?: string, doorNumber?: number, imageUrl: string) {
         this.mainText = bodyText;
         this.prizeText = prizeText;
         this.doorNumber = doorNumber;
-        console.log(bodyText);
+        this.modalImage = imageUrl;
         this.size = size;
         this.opened = !this.opened;
+
     }
 
     cancel() {

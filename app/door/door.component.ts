@@ -16,12 +16,19 @@ import {CalendarService} from "../services/calendar.service";
 export class DoorComponent {
 
     @Input() doorNumber : number;
-    @Input() doorQuote : string;
+    doorQuote : string;
     @Input() containerId: string;
-    @Input() prize: string;
+    prize: string;
+    userWin: boolean = false;
+    instructions: string = '';
+    imageUrl: string = '';
+    doorAvailable: boolean = false;
+
     cardClass: string = 'card';
     doorOpen: boolean = false;
     bgPos: string = '';
+
+
     private loaderVisible: string = 'none';
 
     constructor(public calendarService : CalendarService, private http: Http){}
@@ -50,7 +57,15 @@ export class DoorComponent {
         let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'X-Participant': this.calendarService.userToken});
         this.http.post(targetUrl,'', {headers: headers})
             .toPromise()
-            .then((Response: any) => {console.log(Response.json());})
+            .then((Response: any) => {
+                console.log(Response.json());
+                Response.json().prize ? this.prize = Response.json().prize : '';
+                Response.json().instructions ? this.instructions = Response.json().instructions : '';
+                Response.json().quote ? this.doorQuote = Response.json().quote : '';
+                Response.json().win ? this.userWin = Response.json().userWin : false;
+                Response.json().imageUrl ? this.imageUrl = Response.json().imageUrl: '';
+                Response.json().available ? this.doorAvailable = Response.json().available : false;
+            })
             .then(() => {
                 this.doorOpen = !this.doorOpen;
                 this.loaderVisible = 'none';
