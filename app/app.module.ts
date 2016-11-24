@@ -18,6 +18,7 @@ import { CalendarModal } from "./shared/calendar.modal";
 import { EditorGuardDetail } from './editor/editor.guard.service';
 import { EditorService } from "./editor/editor.service";
 import { CalendarService } from "./services/calendar.service";
+import { LanguageService } from "./services/languages.service";
 
 
 
@@ -38,6 +39,6 @@ import { CalendarService } from "./services/calendar.service";
 
   bootstrap: [ AppComponent ],
 
-  providers: [ EditorGuardDetail, EditorService, CalendarService ]
+  providers: [ EditorGuardDetail, EditorService, CalendarService, LanguageService ]
 })
 export class AppModule { }

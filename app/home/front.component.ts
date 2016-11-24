@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CalendarService } from "../services/calendar.service";
+import { LanguageService } from "../services/languages.service";
 
 @Component({
     moduleId: module.id,
@@ -12,5 +13,13 @@ export class FrontComponent {
     companyName: string = '';
     participantName: string = '';
 
-    constructor(public calendarService: CalendarService){}
+    constructor(public calendarService: CalendarService, public languageService: LanguageService ){}
+
+    ngOnInit(){
+        console.log(this.languageService.texts.no);
+    }
+
+    switchLanguage(lang){
+        this.languageService.setLanguage = lang;
+    }
 }

@@ -26,7 +26,7 @@ export class EditorService {
                 console.log('Got id: ' + Response.json().id);
                 this.calendar = Response.json();
                 this.calendar.password = adminPassword;})
-            .then(() => {this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...')})
+            .then(() => {this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...');})
             .catch(error => console.log(error));
     }
 
@@ -52,7 +52,9 @@ export class EditorService {
                 console.log('Calendar Loaded.');
                 this.calendar = Response.json();
             })
-            .then(() => {this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...')})
+            .then(() => {
+                this.calendar.id.length === 24 ? this._router.navigate(['/editor']) : console.log('Failed routing...');
+                this.selectedDoor = this.calendar.doors[0];})
             .catch((error: any) => console.log(error));
     }
 

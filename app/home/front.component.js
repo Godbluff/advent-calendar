@@ -10,20 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var calendar_service_1 = require("../services/calendar.service");
+var languages_service_1 = require("../services/languages.service");
 var FrontComponent = (function () {
-    function FrontComponent(calendarService) {
+    function FrontComponent(calendarService, languageService) {
         this.calendarService = calendarService;
+        this.languageService = languageService;
         this.pageTitle = 'Welcome';
         this.companyName = '';
         this.participantName = '';
     }
+    FrontComponent.prototype.ngOnInit = function () {
+        console.log(this.languageService.texts.no);
+    };
+    FrontComponent.prototype.switchLanguage = function (lang) {
+        this.languageService.setLanguage = lang;
+    };
     FrontComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: 'front.component.html',
             styleUrls: ['front.component.css']
         }), 
-        __metadata('design:paramtypes', [calendar_service_1.CalendarService])
+        __metadata('design:paramtypes', [calendar_service_1.CalendarService, languages_service_1.LanguageService])
     ], FrontComponent);
     return FrontComponent;
 }());

@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var calendar_service_1 = require("./services/calendar.service");
 var router_1 = require('@angular/router');
 require('rxjs/add/operator/filter');
+var languages_service_1 = require("./services/languages.service");
 var AppComponent = (function () {
     function AppComponent(router) {
         this.router = router;
@@ -27,7 +28,7 @@ var AppComponent = (function () {
             selector: 'ca-app',
             moduleId: module.id,
             templateUrl: 'app.component.html',
-            providers: [calendar_service_1.CalendarService]
+            providers: [calendar_service_1.CalendarService, languages_service_1.LanguageService]
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], AppComponent);

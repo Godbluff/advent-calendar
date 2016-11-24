@@ -42,7 +42,13 @@
         </div>
         <div class="col-md-12">
             <div class="btn btn-success col-md-6" style="width: 80%; margin-top: 20px;" (click)="editorService.updateFullCalendar()">Update Calendar</div>
-            <div class="btn btn-success col-md-6" style="width: 80%; margin-top: 20px;" (click)="editorService.unlockCalendar()">Make Doors Available</div>
+            <div class="{{editorService.calendar.doorsAlwaysAvailable ? 'btn btn-success col-md-6' : 'btn btn-danger col-md-6'}}"
+                 style="width: 80%; margin-top: 20px;"
+                 (click)="editorService.unlockCalendar()"
+                 popover="Toggle participants ability to see open calendar doors before december 1st. This is a testing function."
+                 popoverPlacement="bottom"
+                 [popoverOnHover]="true"
+                 [popoverAnimation]="true">{{editorService.calendar.doorsAlwaysAvailable ? 'Doors Unlocked' : 'Doors Locked'}}</div>
         </div>
 
         <div class="door-edit-container col-md-12">

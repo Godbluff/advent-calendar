@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorService } from './editor.service';
+import {toPromise} from "rxjs/operator/toPromise";
+
 
 @Component({
     selector: 'ed-app',
@@ -10,24 +12,24 @@ import { EditorService } from './editor.service';
 
 
 export class EditorComponent implements OnInit {
+
     highlightStatus: Array<boolean> = [true];
-    selectedDoor: any = {
-    };
+    selectedDoor: any = { };
     newParticipant: string = '';
     calendar = {};
     filled: any  = [];
 
+
     constructor(public editorService: EditorService) { }
 
-    ngOnInit(): void {
-        let service = this.editorService;
-        //service.calendar.id.length > 0 ? console.log('Got Calendar') : console.log('No Calendar');
-        //this.selectedDoor = service.calendar.doors[0];
 
-//        LocalStorage for retrieval after refresh.
+    ngOnInit(): void {
+//  LocalStorage for retrieval after refresh.
+        let service = this.editorService;
         let retrievedToken = localStorage.getItem('CCUser');
         let parsedToken = JSON.parse(retrievedToken);
         service.getEditableCalendar(parsedToken.token, 'editor component ngOnInit');
+        service.authToken = parsedToken.token;
 
     }
 

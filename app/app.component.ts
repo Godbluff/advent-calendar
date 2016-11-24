@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarService } from "./services/calendar.service";
 import { Router, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import { LanguageService } from "./services/languages.service";
 
 
 @Component({
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/filter';
     selector: 'ca-app',
     moduleId: module.id,
     templateUrl: 'app.component.html',
-    providers: [ CalendarService ]
+    providers: [ CalendarService, LanguageService ]
 })
 
 
