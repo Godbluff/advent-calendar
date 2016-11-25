@@ -16,7 +16,7 @@ import { CalendarModal } from "../shared/calendar.modal";
 
 export class EditorComponent implements OnInit {
 
-    highlightStatus: Array<boolean> = [true];
+    highlightStatus: Array<boolean> = [false];
     selectedDoor: any = { };
     newParticipant: string = '';
     calendar = {};
@@ -38,8 +38,16 @@ export class EditorComponent implements OnInit {
         let parsedLang = JSON.parse(retrievedLang);
         this.languageService.setLanguage = parsedLang.language;
 
+        this.checkDataComplete();
     }
 
+    checkDataComplete(){
+        setTimeout( () => {
+            this.editorService.calendar.doors
+                ? this.showDoorData(0)
+                : this.checkDataComplete();
+        },200)
+    }
 
     showDoorData(doorNr:any): void {
         let service = this.editorService;

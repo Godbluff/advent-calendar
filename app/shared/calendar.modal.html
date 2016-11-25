@@ -4,11 +4,9 @@
         <p class="top-header">{{outcomeText}}</p>
         <p class="sub-header">Dagens premie {{win ? 'er:' : 'var:'}}</p>
         <p>{{prizeText}}</p>
-        <br/><br/>
-        <p style="font-style: italic;">{{instructionText}}</p>
     </div>
     <template ngl-modal-footer *ngIf="!noFooter">
-        <p style="font-style: italic;float: left;">{{instructionText}}</p>
+        <p style="font-style: italic;float: left; max-width: 85%;">{{instructionText}}</p>
         <button class="slds-button slds-button--destructive" (click)="cancel()">Close</button>
     </template>
 </ngl-modal>

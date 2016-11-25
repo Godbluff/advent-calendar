@@ -17,11 +17,6 @@
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true">
-        <input class="edit-input" placeholder="Add participant" [(ngModel)]="newParticipant" (keyup.enter)="addParticipant(newParticipant)"
-               popover="Add the name of a new paticipant. All participants use the calendar name and the participant name in order to access their version of the calendar."
-               popoverPlacement="bottom"
-               [popoverOnHover]="true"
-               [popoverAnimation]="true"/>
         </div>
         <div class="col-md-12">
             <input class="edit-input" placeholder="Company Logo URL"[(ngModel)]="editorService.calendar.logoUrl"
@@ -58,8 +53,18 @@
             <div class="btn btn-danger col-sm-6" style="width:44%; margin-right: 3%; margin-left: 3%; margin-top: 20px;" (click)="editorService.logCalendar()"
             >console.log the calenedar</div>
         </div>
+        <div class="col-md-12">
+            <div style="font-size: 18px; margin-top: 20px;">Participiants</div>
+            <input class="edit-input" placeholder="Add participant" [(ngModel)]="newParticipant" (keyup.enter)="addParticipant(newParticipant)"
+               popover="Add the name of a new paticipant. All participants use the calendar name and the participant name in order to access their version of the calendar."
+               popoverPlacement="bottom"
+               [popoverOnHover]="true"
+               [popoverAnimation]="true"/>
+            <div style="color: yellow; font-style: italic; width: 100%; margin-bottom: -5px;
+font-size: 12px;">Hit enter to add.</div>
+        </div>
         <div class="col-md-12 participants-container">
-            <div style="font-size: 18px;margin-bottom: 10px;">Participiants</div>
+
             <div *ngFor="let person of editorService.calendar.participants; let i = index" class="btn btn-default" style="min-width: 120px; text-align: left; margin-right: 2px; margin-bottom: 3px;">{{person.name}}<div
                     (click)="removeParticipant(i)" style="margin-left: 10px;"
                     class="glyphicon glyphicon-remove"
@@ -102,13 +107,14 @@
                        [popoverAnimation]="true"/>
             </div>
             <div class="col-md-6">
-                <img  *ngIf="selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="selectedDoor.imageUrl" style="max-width: 100%; max-height: 100%; float: right;"/>
+                <img  *ngIf="selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="selectedDoor.imageUrl" style="max-width: 100%; max-height: 200px; float: right;"/>
             </div>
             <div class="col-md-6">
-                <div class="door-container" style="top: 0px; float: left;" onClick="" id="{{containerId}}">
+                <div style="width: 100%; text-align: center; margin-top: 20px;">Preview Door</div>
+                <div class="door-container" style="top: 0px; float: right; margin: 10px; margin-right: 15px;" onClick="" id="{{containerId}}">
                     <div style="cursor: pointer;">
                         <div style="position:absolute; height: 100%; width: 100%; mix-blend-mode: color-dodge;overflow: hidden; cursor: pointer;" [ngStyle]="{ 'opacity': doorOpen ? 1 : 0}">
-                            <img class="image" src="https://www.jukeboxprint.com/images/3d-embossed-black-business-card.jpg" (click)="test.open(imageUrl, userWin, small, prize, doorNumber, instructions)"/>
+                            <img class="image" src="https://www.jukeboxprint.com/images/3d-embossed-black-business-card.jpg" (click)="test.open(selectedDoor.imageUrl, userWin, small, selectedDoor.prize, selectedDoor.number, selectedDoor.instructions)"/>
                         </div>
                     </div>
                     <div class="cardshade-container">
@@ -116,14 +122,16 @@
                     </div>
                     <div (click)="toggleDoor()"  class="{{doorOpen ? 'card card-open' : 'card'}}" style="position: absolute;">
                         <div class="face front" id="front" [style.backgroundPosition]="bgPos">
-                            {{doorNumber}}
-                            <div class="timer" id="loader-{{doorNumber}}" [style.display]="loaderVisible"></div>
+                            {{selectedDoor.number}}
+                            <div class="timer" id="loader-{{selectedDoor.number}}" [style.display]="loaderVisible"></div>
                         </div>
-                        <div class="face back"><p>{{doorQuote}}</p></div>
+                        <div class="face back"><p>{{selectedDoor.quote}}</p></div>
                     </div>
                 </div>
+                <div style="clear: both;width: 100%; text-align: center; margin-top: 10px; color: yellow; font-style: italic;">
+                    {{doorOpen ? 'Click door to close, or inside box to open content.': 'Click door to open'}}</div>
             </div>
-            <div class="col-md-12" style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">This box saves everything, always.</div>
+            <div class="col-md-12" style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: 0px;">This box saves everything, always.</div>
 
         </div>
 
