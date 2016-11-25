@@ -79,17 +79,12 @@
         </div>
         <div class="door-edit-container col-md-12">
             <div style="font-size: 18px;">Edit Door Number: {{selectedDoor.number}}</div>
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <input  class="edit-input" placeholder="The Prize" [(ngModel)]="selectedDoor.prize" (keyup)="updateEntry('prize')" (blur)="doorCheck()"
                     popover="Enter the prize to be handed out on December {{selectedDoor.number}}."
                     popoverPlacement="bottom"
                     [popoverOnHover]="true"
                     [popoverAnimation]="true"/>
-                <input class="edit-input" placeholder="Prize Image - Optional" [(ngModel)]="selectedDoor.imageUrl" (keyup)="updateEntry('imageUrl')" (keyup.enter)="enterToTab()"
-                   popover="Optional image URL for the prize on December {{selectedDoor.number}}. If nothing is entered, the default image is used."
-                   popoverPlacement="bottom"
-                   [popoverOnHover]="true"
-                   [popoverAnimation]="true"/>
                 <input class="edit-input" placeholder="A Memorable Quote." [(ngModel)]="selectedDoor.quote" (keyup)="updateEntry('quote')"
                    popover="Insert a short quote if you want."
                    popoverPlacement="bottom"
@@ -100,14 +95,38 @@
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
+                <input class="edit-input" placeholder="Prize Image - Optional" [(ngModel)]="selectedDoor.imageUrl" (keyup)="updateEntry('imageUrl')" (keyup.enter)="enterToTab()"
+                       popover="Optional image URL for the prize on December {{selectedDoor.number}}. If nothing is entered, the default image is used."
+                       popoverPlacement="bottom"
+                       [popoverOnHover]="true"
+                       [popoverAnimation]="true"/>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <img  *ngIf="selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="selectedDoor.imageUrl" style="max-width: 100%; max-height: 100%; float: right;"/>
+            </div>
+            <div class="col-md-6">
+                <div class="door-container" style="top: 0px; float: left;" onClick="" id="{{containerId}}">
+                    <div style="cursor: pointer;">
+                        <div style="position:absolute; height: 100%; width: 100%; mix-blend-mode: color-dodge;overflow: hidden; cursor: pointer;" [ngStyle]="{ 'opacity': doorOpen ? 1 : 0}">
+                            <img class="image" src="https://www.jukeboxprint.com/images/3d-embossed-black-business-card.jpg" (click)="test.open(imageUrl, userWin, small, prize, doorNumber, instructions)"/>
+                        </div>
+                    </div>
+                    <div class="cardshade-container">
+                        <div class="{{doorOpen ? 'cardshade cardshade-open': 'cardshade'}}"></div>
+                    </div>
+                    <div (click)="toggleDoor()"  class="{{doorOpen ? 'card card-open' : 'card'}}" style="position: absolute;">
+                        <div class="face front" id="front" [style.backgroundPosition]="bgPos">
+                            {{doorNumber}}
+                            <div class="timer" id="loader-{{doorNumber}}" [style.display]="loaderVisible"></div>
+                        </div>
+                        <div class="face back"><p>{{doorQuote}}</p></div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-12" style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">This box saves everything, always.</div>
 
         </div>
 
     </div>
-
+<cc-modal #test></cc-modal>
 </div>

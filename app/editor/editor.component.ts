@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { EditorService } from './editor.service';
 import {toPromise} from "rxjs/operator/toPromise";
 import {LanguageService} from "../services/languages.service";
+import { CalendarModal } from "../shared/calendar.modal";
 
 
 @Component({
     selector: 'ed-app',
     moduleId: module.id,
     templateUrl: 'editor.component.html',
-    styleUrls: ['editor.component.css']
+    styleUrls: ['editor.component.css'],
+    providers: [ CalendarModal ]
 })
 
 
@@ -19,6 +21,7 @@ export class EditorComponent implements OnInit {
     newParticipant: string = '';
     calendar = {};
     filled: any  = [];
+    doorOpen: boolean = false;
 
 
     constructor(public editorService: EditorService, public languageService: LanguageService) { }
@@ -88,4 +91,7 @@ export class EditorComponent implements OnInit {
         console.log(this.filled);
     }
 
+    toggleDoor(): void {
+        this.doorOpen = !this.doorOpen;
+    }
 }
