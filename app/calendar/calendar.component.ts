@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from "../services/calendar.service";
+import {LanguageService} from "../services/languages.service";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CalendarComponent {
 
     errorMessage: string = '';
 
-    constructor(public calendarService: CalendarService) {
+    constructor(public calendarService: CalendarService, public languageService: LanguageService) {
 
     }
 
@@ -25,6 +26,10 @@ export class CalendarComponent {
         let parsedToken = JSON.parse(retrievedToken);
         this.calendarService.openCalendar(parsedToken.token);
         this.calendarService.userToken = parsedToken.token;
+
+        let retrievedLang = localStorage.getItem('CCLang');
+        let parsedLang = JSON.parse(retrievedLang);
+        this.languageService.setLanguage = parsedLang.language;
     }
 
 }

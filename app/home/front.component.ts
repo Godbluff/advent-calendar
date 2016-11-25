@@ -16,10 +16,14 @@ export class FrontComponent {
     constructor(public calendarService: CalendarService, public languageService: LanguageService ){}
 
     ngOnInit(){
-        console.log(this.languageService.texts.no);
+        let retrievedLang = localStorage.getItem('CCLang');
+        let parsedLang = JSON.parse(retrievedLang);
+        this.languageService.setLanguage = parsedLang.language;
     }
 
     switchLanguage(lang: string){
         this.languageService.setLanguage = lang;
+        localStorage.setItem('CCLang', JSON.stringify({ language: this.languageService.setLanguage}));
+        console.log('Setting Language');
     }
 }

@@ -20,10 +20,14 @@ var FrontComponent = (function () {
         this.participantName = '';
     }
     FrontComponent.prototype.ngOnInit = function () {
-        console.log(this.languageService.texts.no);
+        var retrievedLang = localStorage.getItem('CCLang');
+        var parsedLang = JSON.parse(retrievedLang);
+        this.languageService.setLanguage = parsedLang.language;
     };
     FrontComponent.prototype.switchLanguage = function (lang) {
         this.languageService.setLanguage = lang;
+        localStorage.setItem('CCLang', JSON.stringify({ language: this.languageService.setLanguage }));
+        console.log('Setting Language');
     };
     FrontComponent = __decorate([
         core_1.Component({

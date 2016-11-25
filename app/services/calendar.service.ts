@@ -25,7 +25,7 @@ export class CalendarService {
             .toPromise()
             .then((Response: any) => {
                 this.userToken = Response.json().token;
-                localStorage.setItem('CCParticipant', JSON.stringify({ token: this.userToken }));
+                localStorage.setItem('CCParticipant', JSON.stringify({ token: this.userToken}));
             })
             .then(()=> this.openCalendar(this.userToken))
             .catch((error: any) => {console.log(error); this.loaderVisible = 'none';});

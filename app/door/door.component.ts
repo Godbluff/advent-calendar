@@ -46,7 +46,7 @@ export class DoorComponent {
                var el = document.querySelector("#" + this.containerId);
                var top = el.getBoundingClientRect().top;
                var left = el.getBoundingClientRect().left;
-               this.bgPos = `${-left}px ${-top}px`;
+               this.bgPos = `${-left-1}px ${-top-1}px`;
            });
         },0);
     }
@@ -58,7 +58,6 @@ export class DoorComponent {
         this.http.post(targetUrl,'', {headers: headers})
             .toPromise()
             .then((Response: any) => {
-                console.log(Response.json());
                 Response.json().prize ? this.prize = Response.json().prize : '';
                 Response.json().instructions ? this.instructions = Response.json().instructions : '';
                 Response.json().quote ? this.doorQuote = Response.json().quote : '';

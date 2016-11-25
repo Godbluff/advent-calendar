@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorService } from './editor.service';
 import {toPromise} from "rxjs/operator/toPromise";
+import {LanguageService} from "../services/languages.service";
 
 
 @Component({
@@ -20,16 +21,19 @@ export class EditorComponent implements OnInit {
     filled: any  = [];
 
 
-    constructor(public editorService: EditorService) { }
+    constructor(public editorService: EditorService, public languageService: LanguageService) { }
 
 
     ngOnInit(): void {
 //  LocalStorage for retrieval after refresh.
-        let service = this.editorService;
         let retrievedToken = localStorage.getItem('CCUser');
         let parsedToken = JSON.parse(retrievedToken);
-        service.getEditableCalendar(parsedToken.token, 'editor component ngOnInit');
-        service.authToken = parsedToken.token;
+        this.editorService.getEditableCalendar(parsedToken.token, 'editor component ngOnInit');
+        this.editorService.authToken = parsedToken.token;
+
+        let retrievedLang = localStorage.getItem('CCLang');
+        let parsedLang = JSON.parse(retrievedLang);
+        this.languageService.setLanguage = parsedLang.language;
 
     }
 

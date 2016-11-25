@@ -38,7 +38,7 @@ export class EditorService {
             .then((Response: any) => { 
                 this.authToken = Response.json().authToken;
                 this.getEditableCalendar(this.authToken, 'editCalendar');
-                localStorage.setItem('CCUser', JSON.stringify({ token: this.authToken }));
+                localStorage.setItem('CCUser', JSON.stringify({ token: this.authToken}));
             })
             .catch((error: any) => console.log(error));
         }

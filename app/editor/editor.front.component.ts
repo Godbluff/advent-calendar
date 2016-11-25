@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorService } from './editor.service';
+import {LanguageService} from "../services/languages.service";
 
 @Component({
     moduleId: module.id,
@@ -15,9 +16,13 @@ export class EditorFrontComponent implements OnInit {
     companyName2: string = '';
     adminPassword2 : string = '';
 
-    constructor(public editorService: EditorService){
+    constructor(public editorService: EditorService, public languageService: LanguageService){
 
     }
-    ngOnInit(){}
+    ngOnInit(){
+        let retrievedLang = localStorage.getItem('CCLang');
+        let parsedLang = JSON.parse(retrievedLang);
+        this.languageService.setLanguage = parsedLang.language;
+    }
 
 }
