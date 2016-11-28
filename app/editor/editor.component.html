@@ -1,5 +1,5 @@
 <div class="editorbg">
-    <div class="calendar-header">Calendar Editor<div class="calendar-border"></div></div>
+    <div class="calendar-header">{{languageService.editor.headings.topHeading[languageService.setLanguage]}}<div class="calendar-border"></div></div>
     <div class="link">
         <div [routerLink]="['/']" class="glyphicon glyphicon-home icon-link"></div>
     </div>
@@ -8,60 +8,64 @@
     <div class="col-md-5" style="text-align: center;">
         <div class="col-md-12">
         <input class="edit-input" placeholder="Company name" [(ngModel)]="editorService.calendar.companyName"
-               popover="The Heading on the calendar will be 'The <company name> Advent Calendar'."
+               popover="{{languageService.editor.popovers.calName[languageService.setLanguage]}}"
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
         <input class="edit-input" placeholder="Calendar Background Url" [(ngModel)]="editorService.calendar.bgUrl"
-               popover="If you do not wich to use the default background, enter a valid URL for another image and it will be used instead."
+               popover="{{languageService.editor.popovers.calBgUrl[languageService.setLanguage]}}"
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true">
         </div>
         <div class="col-md-12">
             <input class="edit-input" placeholder="Company Logo URL"[(ngModel)]="editorService.calendar.logoUrl"
-                   popover="To add the logo of your company to the calendar, paste in a URL to the image here."
+                   popover="{{languageService.editor.popovers.companyLogo[languageService.setLanguage]}}"
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
             <input class="edit-input" placeholder="administrator e-mail" [(ngModel)]="editorService.calendar.contactEmail"
-                   popover="Insert e-mail for password retrieval."
+                   popover="{{languageService.editor.popovers.adminEmail[languageService.setLanguage]}}"
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true">
             <input class="edit-input" placeholder="Winners Per Day" value="1" [(ngModel)]="editorService.calendar.winnersPerDay"
-                   popover="If you have more than one winner per day, insert the number here. This is added to all doors."
+                   popover="{{languageService.editor.popovers.dailyWinners[languageService.setLanguage]}}"
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
         </div>
         <div class="col-md-12">
-            <div class="btn btn-success col-sm-6" style="width:44%; margin-right: 3%; margin-left: 3%;  margin-top: 20px;" (click)="editorService.updateFullCalendar()">Update Calendar</div>
+            <div class="btn btn-success col-sm-6" style="width:44%; margin-right: 3%; margin-left: 3%;  margin-top: 20px;" (click)="editorService.updateFullCalendar()"
+                 popover="{{languageService.editor.popovers.updateCal[languageService.setLanguage]}}"
+                 popoverPlacement="bottom"
+                 [popoverOnHover]="true"
+                 [popoverAnimation]="true">{{languageService.editor.buttons.updateButton[languageService.setLanguage]}}</div>
             <div class="{{editorService.calendar.doorsAlwaysAvailable ? 'btn btn-success col-sm-6' : 'btn btn-danger col-sm-6'}}"
                  style="width:44%; margin-right: 3%; margin-left: 3%; margin-top: 20px;"
                  (click)="editorService.unlockCalendar()"
-                 popover="Toggle participants ability to see open calendar doors before december 1st. This is a testing function."
+                 popover="{{languageService.editor.popovers.unlockDoors[languageService.setLanguage]}}"
                  popoverPlacement="bottom"
                  [popoverOnHover]="true"
-                 [popoverAnimation]="true">{{editorService.calendar.doorsAlwaysAvailable ? 'Doors Unlocked' : 'Doors Locked'}}</div>
+                 [popoverAnimation]="true">{{editorService.calendar.doorsAlwaysAvailable ? languageService.editor.buttons.unlockButton[languageService.setLanguage+2] : languageService.editor.buttons.unlockButton[languageService.setLanguage+1]}}</div>
             <div [routerLink]="['/']" fragment="top" class="btn btn-success col-sm-6" style="width:44%; margin-right: 3%; margin-left: 3%; margin-top: 20px;"
-                 popover="This will freeze the calendar and bring you back to the front page. You can log back in to edit later."
+                 popover="{{languageService.editor.popovers.exitEdit[languageService.setLanguage]}}"
                  popoverPlacement="bottom"
                  [popoverOnHover]="true"
                  [popoverAnimation]="true"
-                 (click)="editorService.updateFullCalendar()">End Editing</div>
-            <div class="btn btn-danger col-sm-6" style="width:44%; margin-right: 3%; margin-left: 3%; margin-top: 20px;" (click)="editorService.logCalendar()"
-            >console.log the calenedar</div>
+                 (click)="editorService.updateFullCalendar()">{{languageService.editor.buttons.endEdit[languageService.setLanguage]}}</div>
+            <div class="btn btn-danger col-sm-6" style="opacity: 0.1;width:44%; margin-right: 3%; margin-left: 3%; margin-top: 20px;" (click)="editorService.logCalendar()"
+            >console.log the calendar</div>
         </div>
         <div class="col-md-12">
-            <div style="font-size: 18px; margin-top: 20px;">Participiants</div>
+            <div style="font-size: 18px; margin-top: 20px;">{{languageService.editor.headings.participantHeading[languageService.setLanguage]}}</div>
             <input class="edit-input" placeholder="Add participant" [(ngModel)]="newParticipant" (keyup.enter)="addParticipant(newParticipant)"
-               popover="Add the name of a new paticipant. All participants use the calendar name and the participant name in order to access their version of the calendar."
+               popover="{{languageService.editor.popovers.addParticipants[languageService.setLanguage]}}"
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
             <div style="color: yellow; font-style: italic; width: 100%; margin-bottom: -5px;
-font-size: 12px;">Hit enter to add.</div>
+font-size: 12px;">{{languageService.editor.popovers.addPartHelp[languageService.setLanguage]}}</div>
         </div>
         <div class="col-md-12 participants-container">
 
@@ -69,39 +73,39 @@ font-size: 12px;">Hit enter to add.</div>
                     (click)="removeParticipant(i)" style="margin-left: 10px;"
                     class="glyphicon glyphicon-remove"
                     style="float: right; line-height: 18px; color: red; cursor: pointer;"
-                    popover="Remove participant."
+                    popover="{{languageService.editor.popovers.removeParticipant[languageService.setLanguage]}}"
                     popoverPlacement="top"
                     [popoverOnHover]="true"
                     [popoverAnimation]="true"></div></div>
-            <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">All participants log in by using the comany name of the calendar and the participant name as is it typed in this list.<br/>Once the calendar is initiated on the 1st of December, participants can no longer be edited.</div>
+            <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">{{languageService.editor.popovers.participantHelp[languageService.setLanguage+1]}}<br/>{{languageService.editor.popovers.preview[languageService.setLanguage+2]}}</div>
         </div>
     </div>
     <div class="col-md-7">
         <div class="col-md-12" style="text-align: center;">
             <div *ngFor="let door of editorService.calendar.doors; let i = index" (click)="showDoorData(i)" [class.selected]="highlightStatus[i]" class="door-select">{{i+1}}</div>
-            <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">Select a calendar entry to edit it.</div>
+            <div style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: -10px;">{{languageService.editor.popovers.doorHelp[languageService.setLanguage]}}</div>
 
         </div>
         <div class="door-edit-container col-md-12">
-            <div style="font-size: 18px;">Edit Door Number: {{selectedDoor.number}}</div>
+            <div style="font-size: 18px;">{{languageService.editor.popovers.editDoor[languageService.setLanguage]}} {{selectedDoor.number}}</div>
             <div class="col-md-12">
                 <input  class="edit-input" placeholder="The Prize" [(ngModel)]="selectedDoor.prize" (keyup)="updateEntry('prize')" (blur)="doorCheck()"
-                    popover="Enter the prize to be handed out on December {{selectedDoor.number}}."
+                    popover="{{languageService.editor.popovers.prizeHelp[languageService.setLanguage]}}."
                     popoverPlacement="bottom"
                     [popoverOnHover]="true"
                     [popoverAnimation]="true"/>
                 <input class="edit-input" placeholder="A Memorable Quote." [(ngModel)]="selectedDoor.quote" (keyup)="updateEntry('quote')"
-                   popover="Insert a short quote if you want."
+                   popover="{{languageService.editor.popovers.quoteHelp[languageService.setLanguage]}}"
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
                 <input class="edit-input" placeholder="Instructions: 'Pick up prize at...'" [(ngModel)]="selectedDoor.instructions" (keyup)="updateEntry('instructions')"
-                   popover="Tell your winning participants how to pick up their prize."
+                   popover="{{languageService.editor.popovers.instructionHelp[languageService.setLanguage]}}"
                    popoverPlacement="bottom"
                    [popoverOnHover]="true"
                    [popoverAnimation]="true"/>
                 <input class="edit-input" placeholder="Prize Image - Optional" [(ngModel)]="selectedDoor.imageUrl" (keyup)="updateEntry('imageUrl')" (keyup.enter)="enterToTab()"
-                       popover="Optional image URL for the prize on December {{selectedDoor.number}}. If nothing is entered, the default image is used."
+                       popover="{{languageService.editor.popovers.imageUrlHelp[languageService.setLanguage]}}"
                        popoverPlacement="bottom"
                        [popoverOnHover]="true"
                        [popoverAnimation]="true"/>
@@ -110,7 +114,7 @@ font-size: 12px;">Hit enter to add.</div>
                 <img  *ngIf="selectedDoor.imageUrl && this.selectedDoor.imageUrl.length >= 16" [src]="selectedDoor.imageUrl" style="max-width: 100%; max-height: 200px; float: right;"/>
             </div>
             <div class="col-md-6">
-                <div style="width: 100%; text-align: center; margin-top: 20px;">Preview Door</div>
+                <div style="width: 100%; text-align: center; margin-top: 20px;">{{languageService.editor.popovers.preview[languageService.setLanguage]}}</div>
                 <div class="door-container" style="top: 0px; float: right; margin: 10px; margin-right: 15px;" onClick="" id="{{containerId}}">
                     <div style="cursor: pointer;">
                         <div style="position:absolute; height: 100%; width: 100%; mix-blend-mode: color-dodge;overflow: hidden; cursor: pointer;" [ngStyle]="{ 'opacity': doorOpen ? 1 : 0}">
@@ -129,9 +133,9 @@ font-size: 12px;">Hit enter to add.</div>
                     </div>
                 </div>
                 <div style="clear: both;width: 100%; text-align: center; margin-top: 10px; color: yellow; font-style: italic;">
-                    {{doorOpen ? 'Click door to close, or inside box to open content.': 'Click door to open'}}</div>
+                    {{doorOpen ? languageService.editor.popovers.clickToOpen[languageService.setLanguage+2] : languageService.editor.popovers.clickToOpen[languageService.setLanguage+1]}}</div>
             </div>
-            <div class="col-md-12" style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: 0px;">This box saves everything, always.</div>
+            <div class="col-md-12" style="font-style: italic; color: yellow; margin-top: 10px; margin-bottom: 0px;">{{languageService.editor.popovers.boxHelp[languageService.setLanguage]}}</div>
 
         </div>
 

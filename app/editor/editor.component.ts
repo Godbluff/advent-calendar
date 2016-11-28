@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorService } from './editor.service';
 import {toPromise} from "rxjs/operator/toPromise";
-import {LanguageService} from "../services/languages.service";
+import { LanguageService } from "../services/languages.service";
 import { CalendarModal } from "../shared/calendar.modal";
 
 

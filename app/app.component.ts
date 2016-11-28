@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CalendarService } from "./services/calendar.service";
 import { Router, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';

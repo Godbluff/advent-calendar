@@ -61,7 +61,7 @@ export class DoorComponent {
                 Response.json().prize ? this.prize = Response.json().prize : '';
                 Response.json().instructions ? this.instructions = Response.json().instructions : '';
                 Response.json().quote ? this.doorQuote = Response.json().quote : '';
-                Response.json().win ? this.userWin = Response.json().userWin : false;
+                Response.json().win ? this.userWin = Response.json().win : false;
                 Response.json().imageUrl ? this.imageUrl = Response.json().imageUrl : this.imageUrl = 'http://www.stoltzimage.com/images/white-box-with-bow.jpg';
                 Response.json().available ? this.doorAvailable = Response.json().available : false;
             })

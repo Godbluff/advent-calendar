@@ -21,7 +21,7 @@ export class CalendarModal {
     win: boolean = false;
     outcomeText: string = '';
 
-    open(imageUrl: string, win: boolean, size?: string, prizeText?: string, doorNumber?: number, instructionText?: string ) {
+    open(imageUrl: string, win: boolean, size?: string, prizeText?: string, doorNumber?: number, instructionText? ) {
         this.win = win;
         this.prizeText = prizeText;
         this.doorNumber = doorNumber;
