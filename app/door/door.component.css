@@ -14,7 +14,7 @@
     -webkit-box-shadow: inset 0px 0px 20px black;
     -moz-box-shadow: inset 0px 0px 20px black;
     box-shadow: inset 0px 0px 20px black;
-    margin: 20px 20px;
+    margin: 10px 10px;
 }
 .cardshade-container{
     width: 118px;
@@ -221,4 +221,23 @@
 @keyframes hrhand{
     0%{transform:rotate(0deg)}
     100%{transform:rotate(360deg)}
+}
+@media screen and (max-width: 1920px){
+    .door-container{
+        margin: 30px 40px;
+    }
+    .front {
+        background-size: auto 1200px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+
+    .door-container{
+        margin: 10px;
+    }
+    .front {
+        background-size: auto 800px;
+    }
+    
 }
