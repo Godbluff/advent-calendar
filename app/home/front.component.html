@@ -1,11 +1,15 @@
 ﻿<div class="frontbg">
     <div class="calendar-header">{{languageService.texts.mainHeader[languageService.setLanguage]}}</div>
     <div class="calendar-border"></div>
+
     <div class="flag-container">
         <div class="flag flag-gb" (click)="switchLanguage('gb')"></div>
         <div class="flag flag-no" (click)="switchLanguage('no')"></div>
-
     </div>
+
+    <div style="position: absolute; top :10px; left: 10px;">{{winWidth}}</div>
+    <div style="position: absolute; top :30px; left: 10px;">{{winHeight}}</div>
+
     <div class="col-sm-4">
         {{languageService.texts.welcome[languageService.setLanguage+1]}}<br/><br/>
         {{languageService.texts.welcome[languageService.setLanguage+2]}}<br/><br/>

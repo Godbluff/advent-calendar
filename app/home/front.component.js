@@ -12,12 +12,22 @@ var core_1 = require('@angular/core');
 var calendar_service_1 = require("../services/calendar.service");
 var languages_service_1 = require("../services/languages.service");
 var FrontComponent = (function () {
-    function FrontComponent(calendarService, languageService) {
+    function FrontComponent(calendarService, languageService, ngZone) {
+        var _this = this;
         this.calendarService = calendarService;
         this.languageService = languageService;
+        this.ngZone = ngZone;
         this.pageTitle = 'Welcome';
         this.companyName = '';
         this.participantName = '';
+        this.winWidth = '';
+        this.winHeight = '';
+        window.onresize = function (e) {
+            ngZone.run(function () {
+                _this.winWidth = window.innerWidth;
+                _this.winHeight = window.innerHeight;
+            });
+        };
     }
     FrontComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('CCLang') != null) {
@@ -26,6 +36,8 @@ var FrontComponent = (function () {
             this.languageService.setLanguage = parsedLang.language;
         }
         localStorage.setItem('CCLang', JSON.stringify({ language: this.languageService.setLanguage }));
+        this.winWidth = window.innerWidth;
+        this.winHeight = window.innerHeight;
     };
     FrontComponent.prototype.switchLanguage = function (lang) {
         this.languageService.setLanguage = lang;
@@ -38,7 +50,7 @@ var FrontComponent = (function () {
             templateUrl: 'front.component.html',
             styleUrls: ['front.component.css']
         }), 
-        __metadata('design:paramtypes', [calendar_service_1.CalendarService, languages_service_1.LanguageService])
+        __metadata('design:paramtypes', [calendar_service_1.CalendarService, languages_service_1.LanguageService, core_1.NgZone])
     ], FrontComponent);
     return FrontComponent;
 }());
