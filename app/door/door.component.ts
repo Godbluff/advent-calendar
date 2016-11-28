@@ -49,15 +49,17 @@ export class DoorComponent {
                var el = document.querySelector("#" + this.containerId);
                var top = el.getBoundingClientRect().top;
                var left = el.getBoundingClientRect().left;
-               this.bgPos = `${-left-1}px ${-top-1}px`;
+               let scrollTop = window.scrollY;
+               this.bgPos = `${-left-1}px ${-top -scrollTop -1}px`;
            });
             window.addEventListener('resize', () => {
                 var el = document.querySelector("#" + this.containerId);
                 var top = el.getBoundingClientRect().top;
                 var left = el.getBoundingClientRect().left;
+                let scrollTop = window.scrollY;
                 let bigscreen =  screen.width;
                 if(bigscreen > 1280) {
-                    this.bgPos = `${-left - 1}px ${-top - 1}px`;
+                    this.bgPos = `${-left - 1}px ${-top -scrollTop - 1}px`;
                 }
             });
         },0);
