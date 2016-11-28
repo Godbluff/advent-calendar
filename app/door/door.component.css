@@ -138,12 +138,13 @@
 
 .image{
     position: absolute;
-    height: 170%;
-    top: -23px;
-    left: -3px;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
     transition: all 3s ease-in-out;
     cursor: pointer;
-    opacity: 0;
+    opacity: 1;
 }
 .image.hidden{
     opacity: 0;
