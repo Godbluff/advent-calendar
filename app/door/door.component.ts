@@ -27,13 +27,16 @@ export class DoorComponent {
     cardClass: string = 'card';
     doorOpen: boolean = false;
     bgPos: string = '';
+    screenHeight: number = null;
+    screenWidth: number = null;
 
 
     private loaderVisible: string = 'none';
 
     constructor(public calendarService : CalendarService, private http: Http){}
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+    }
 
     ngAfterViewInit(){
         setTimeout(() => {
@@ -42,12 +45,21 @@ export class DoorComponent {
             var left = el.getBoundingClientRect().left;
             this.bgPos = `${-left-1}px ${-top-1}px`;
 
-           window.addEventListener('resize', () => {
+           window.addEventListener('orientationchange', () => {
                var el = document.querySelector("#" + this.containerId);
                var top = el.getBoundingClientRect().top;
                var left = el.getBoundingClientRect().left;
                this.bgPos = `${-left-1}px ${-top-1}px`;
            });
+            window.addEventListener('resize', () => {
+                var el = document.querySelector("#" + this.containerId);
+                var top = el.getBoundingClientRect().top;
+                var left = el.getBoundingClientRect().left;
+                let bigscreen =  screen.width;
+                if(bigscreen > 1280) {
+                    this.bgPos = `${-left - 1}px ${-top - 1}px`;
+                }
+            });
         },0);
     }
 

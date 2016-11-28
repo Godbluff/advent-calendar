@@ -37,14 +37,24 @@ div.panel-heading {
     }
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 740px) {
     .christmasbg {
-        height: 680px;
+        height: 840px;
+        padding-left: 80px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .christmasbg {
+        height: 1024px;
+        padding-left: 80px;
     }
 }
 
 @media screen and (max-width: 420px){
     .christmasbg {
+        height: 840px;
         padding-left: 10px;
     }
 }

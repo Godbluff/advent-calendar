@@ -253,7 +253,7 @@
     
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 740px) {
     .door-container{
         height: 90px;
         width: 90px;
@@ -275,11 +275,17 @@
         line-height: 95px;
     }
     .front {
-        background-size: auto 680px;
+        background-size: auto 840px;
         font-size: 30px;
     }
     .back {
         font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .front {
+        background-size: auto 1024px;
     }
 }
 
@@ -305,13 +311,18 @@
         transform-origin: 000% 000%;
         height: 78px;
         width: 78px;
+        z-index: 1;
     }
     .card-open {
         -webkit-transform: rotateX(150deg);
         transform: rotateX(150deg);
     }
+    .front {
+        background-size: auto 840px;
+    }
     .back p {
         transform: rotate(180deg);
         transform-origin: 50% 25%;
     }
+
 }
