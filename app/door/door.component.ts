@@ -47,8 +47,8 @@ export class DoorComponent {
 
            window.addEventListener('orientationchange', () => {
                var el = document.querySelector("#" + this.containerId);
-               var top = el.getBoundingClientRect().top;
-               var left = el.getBoundingClientRect().left;
+               var top = el.offsetTop;
+               var left = el.offsetLeft;
                this.bgPos = `${-left-1}px ${-top-1}px`;
            });
             window.addEventListener('resize', () => {
