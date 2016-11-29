@@ -10,19 +10,19 @@
     <div style="position: absolute; top :10px; left: 10px;">{{winWidth}}</div>
     <div style="position: absolute; top :30px; left: 10px;">{{winHeight}}</div>
 
-    <div class="col-sm-4">
+    <div class="col-sm-4" style="display: none;">
         {{languageService.texts.welcome[languageService.setLanguage+1]}}<br/><br/>
         {{languageService.texts.welcome[languageService.setLanguage+2]}}<br/><br/>
         {{languageService.texts.welcome[languageService.setLanguage+3]}}<br/><br/>
         {{languageService.texts.welcome[languageService.setLanguage+4]}}<br/><br/>
         </div>
 
-    <div class="col-sm-4" style="text-align: center; padding-left: 30px; margin-top: -20px;">
+    <div class="col-sm-8" style="text-align: center; padding-left: 30px; margin-top: -20px;">
         <h3>{{languageService.texts.loginHead[languageService.setLanguage]}}</h3>
         <div class="input-header">{{languageService.texts.calName[languageService.setLanguage]}}</div>
         <input class="front-input" placeholder="" [(ngModel)]="companyName"
                popover="{{languageService.popovers.frontCalName[languageService.setLanguage]}}"
-               popoverPlacement="bottom"
+               popoverPlacement="right"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
         <br/><br/>
@@ -42,7 +42,7 @@
     </div>
 
     <div class="col-sm-4" style="text-align: center;">
-        <img src="http://www.pngall.com/wp-content/uploads/2016/05/Christmas-Ornament-PNG-Image.png" width="90%" style="margin-top: -80px; margin-bottom: 20px;"/>
+        <img src="/app/assets/images/silver-balls.png" width="90%" style="margin-top: -80px; margin-bottom: 20px;"/>
     </div>
     <div style="height: 50px; position: fixed; bottom: 0px; left: 0px; width: 100%; background: red;"></div>
 </div>

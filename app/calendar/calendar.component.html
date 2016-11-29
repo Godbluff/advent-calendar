@@ -3,7 +3,7 @@
     <div class="calendar-header">Julekalender for {{calendarService.userCalendar.companyName}}</div>
     <div class="calendar-border"></div>
     <div>{{errorMessage}}</div>
-    <cc-door *ngFor="let door of calendarService.userCalendar.doorSequence; let i = index;" [doorNumber]="door"  [containerId]="'number-' + door" ></cc-door>
+    <cc-door *ngFor="let door of calendarService.userCalendar.doorSequence; let i = index;" [doorNumber]="door"  [containerId]="'number-' + door" [isOpened]="calendarService.userCalendar.doors[i].open"></cc-door>
     <div class="link">
         <div [routerLink]="['/']" class="glyphicon glyphicon-home icon-link"></div>
     </div>

@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Http, Headers, RequestOptions, Response} from '@angular/http';
 import {CalendarModal} from "../shared/calendar.modal";
 import {CalendarService} from "../services/calendar.service";
+import './sparkly.js'
+
+declare var $:any;
 
 @Component({
 
@@ -16,6 +19,7 @@ import {CalendarService} from "../services/calendar.service";
 export class DoorComponent {
 
     @Input() doorNumber : number;
+    @Input() isOpened: boolean = false;
     doorQuote : string;
     @Input() containerId: string;
     prize: string;
@@ -36,6 +40,7 @@ export class DoorComponent {
     constructor(public calendarService : CalendarService, private http: Http){}
 
     ngOnInit(): void {
+
     }
 
     ngAfterViewInit(){
@@ -63,21 +68,26 @@ export class DoorComponent {
                 }
             });
         },0);
+        this.isOpened = this.calendarService.userCalendar.doors[(this.doorNumber-1)].open;
+        this.isOpened === false && $("#" + this.containerId + " .sparkly").sparklingDoor();
     }
 
     toggleDoor(): void {
+        console.log('Door opened? ' + this.isOpened);
         this.loaderVisible = 'block';
         let targetUrl = 'https://juleluka-api.herokuapp.com/calendar/doors/' + this.doorNumber + '/open';
         let headers = new Headers({'Content-type': 'application/json', 'Accept': 'application/json', 'X-Participant': this.calendarService.userToken});
         this.http.post(targetUrl,'', {headers: headers})
             .toPromise()
             .then((Response: any) => {
+                console.log(Response.json());
                 Response.json().prize ? this.prize = Response.json().prize : '';
                 Response.json().instructions ? this.instructions = Response.json().instructions : '';
                 Response.json().quote ? this.doorQuote = Response.json().quote : '';
                 Response.json().win ? this.userWin = Response.json().win : false;
                 Response.json().imageUrl ? this.imageUrl = Response.json().imageUrl : this.imageUrl = 'http://www.stoltzimage.com/images/white-box-with-bow.jpg';
                 Response.json().available ? this.doorAvailable = Response.json().available : false;
+                Response.json().open ? this.isOpened = Response.json().available : false;
             })
             .then(() => {
                 this.doorOpen = !this.doorOpen;

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarService } from "../services/calendar.service";
 import {LanguageService} from "../services/languages.service";
 
-
 @Component({
 
     selector: 'pm-app',
@@ -30,6 +29,9 @@ export class CalendarComponent {
         let retrievedLang = localStorage.getItem('CCLang');
         let parsedLang = JSON.parse(retrievedLang);
         this.languageService.setLanguage = parsedLang.language;
+    }
+
+    ngAfterViewChecked(){
     }
 
 }
