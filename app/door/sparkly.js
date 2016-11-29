@@ -54,7 +54,7 @@ $.fn.sparklingDoor = function( options ) {
             width: $this.outerWidth(),
             height: $this.outerHeight(),
             color: "#FFFFFF",
-            count: 40,
+            count: 25,
             overlap: 0,
             speed: 0.5
         }, options );
@@ -68,7 +68,6 @@ $.fn.sparklingDoor = function( options ) {
     });
 
 };
-
 
 
 

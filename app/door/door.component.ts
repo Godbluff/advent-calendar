@@ -69,7 +69,7 @@ export class DoorComponent {
             });
         },0);
         this.isOpened = this.calendarService.userCalendar.doors[(this.doorNumber-1)].open;
-        this.isOpened === false && $("#" + this.containerId + " .sparkly").sparklingDoor();
+        setTimeout(() => {this.isOpened === false && $("#" + this.containerId + " .sparkly").sparklingDoor()},1000);
     }
 
     toggleDoor(): void {
