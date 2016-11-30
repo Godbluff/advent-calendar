@@ -7,8 +7,8 @@
         <div class="flag flag-no" (click)="switchLanguage('no')"></div>
     </div>
 
-    <div style="position: absolute; top :10px; left: 10px;">{{winWidth}}</div>
-    <div style="position: absolute; top :30px; left: 10px;">{{winHeight}}</div>
+    <div style="position: absolute; top :10px; left: 10px; display: none;">{{winWidth}}</div>
+    <div style="position: absolute; top :30px; left: 10px; display: none;">{{winHeight}}</div>
 
     <div class="col-sm-4" style="display: none;">
         {{languageService.texts.welcome[languageService.setLanguage+1]}}<br/><br/>
@@ -17,7 +17,7 @@
         {{languageService.texts.welcome[languageService.setLanguage+4]}}<br/><br/>
         </div>
 
-    <div class="col-sm-8" style="text-align: center; padding-left: 30px; margin-top: -20px;">
+    <div class="loginplate">
         <h3>{{languageService.texts.loginHead[languageService.setLanguage]}}</h3>
         <div class="input-header">{{languageService.texts.calName[languageService.setLanguage]}}</div>
         <input class="front-input" placeholder="" [(ngModel)]="companyName"
@@ -32,17 +32,19 @@
                popoverPlacement="bottom"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
-        <div class="btn btn-success" style="width: 80%; margin-top:20px; position: relative;" (click)="calendarService.getCalendar(companyName, participantName)">
+        <div class="button" style="width: 80%; margin-top:20px; position: relative;" (click)="calendarService.getCalendar(companyName, participantName)">
             <div class="timer" [style.display]="calendarService.loaderVisible"></div>{{languageService.texts.openCal[languageService.setLanguage]}}
         </div>
-
+    </div>
+    <div class="col-md-4 col-md-offset-4" style="text-align: center;">
         <div class="separator"></div>
+        <div></div>
         <div [routerLink]="['/editor-front']" class="btn btn-success" style="width: 80%;">{{languageService.texts.createNew[languageService.setLanguage]}}</div>
         <div [routerLink]="['/editor-front']" class="btn btn-success" style="width: 80%; margin-top: 20px;">{{languageService.texts.adminCal[languageService.setLanguage]}}</div>
     </div>
 
-    <div class="col-sm-4" style="text-align: center;">
-        <img src="/app/assets/images/silver-balls.png" width="90%" style="margin-top: -80px; margin-bottom: 20px;"/>
+    <div class="ornament">
+        <img src="/app/assets/images/silver-balls.png" width="90%" style="margin-top: 0px; margin-bottom: 20px;"/>
     </div>
-    <div style="height: 50px; position: fixed; bottom: 0px; left: 0px; width: 100%; background: red;"></div>
+    <div style="height: 50px; position: fixed; bottom: 0px; left: 0px; width: 100%; background: url(/app/assets/images/bluetop.png); display: none;"></div>
 </div>
