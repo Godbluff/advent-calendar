@@ -118,7 +118,7 @@ font-size: 12px;">{{languageService.editor.popovers.addPartHelp[languageService.
                 <div class="door-container" style="top: 0px; float: right; margin: 10px; margin-right: 15px;" onClick="" id="{{containerId}}">
                     <div style="cursor: pointer;">
                         <div style="position:absolute; height: 100%; width: 100%; mix-blend-mode: color-dodge;overflow: hidden; cursor: pointer;" [ngStyle]="{ 'opacity': doorOpen ? 1 : 0}">
-                            <img class="image" src="https://www.jukeboxprint.com/images/3d-embossed-black-business-card.jpg" (click)="test.open(selectedDoor.imageUrl, userWin, small, selectedDoor.prize, selectedDoor.number, selectedDoor.instructions)"/>
+                            <img class="image" src="https://www.jukeboxprint.com/images/3d-embossed-black-business-card.jpg" (click)="test.openModal(selectedDoor.imageUrl, userWin, small, selectedDoor.prize, selectedDoor.number, selectedDoor.instructions)"/>
                         </div>
                     </div>
                     <div class="cardshade-container">
