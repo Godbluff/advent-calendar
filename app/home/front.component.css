@@ -195,6 +195,12 @@ input{
     background-position: 0 0;
 }
 
+.button-container{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 .button {
     display: inline-block;
     -webkit-box-sizing:border-box;
@@ -291,11 +297,17 @@ input{
 }
 
 @media screen and (max-width:880px ){
+    .ornament{
+        width: 40%;
+    }
     .loginplate{
         margin: 0;
     }
     .calendar-header{
         width: 100%;
+    }
+    .button-container{
+        margin: 0;
     }
 }
 @media screen and (max-width:685px ){
@@ -305,11 +317,38 @@ input{
     .loginplate{
         margin: 0 auto;
     }
+    .frontbg{
+        padding-top: 80px;
+    }
     .calendar-header{
         text-align: center;
+        padding-left: 0;
     }
     .flag-container{
-        top: 100px;
-        left: 20px;
+        top: 70px;
+        right: 30px;
+    }
+    .button-container{
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 420px){
+    .loginplate{
+        width: 100%;
+        background-size: 100% 100%;
+    }
+    .calendar-header{
+        font-size: 40px;
+        padding: 0;
+    }
+    .button-container{
+        width: 90%;
+        margin-left: 5%;
+    }
+    h3{
+        font-size: 36px;
+    }
+    .button{
+        font-size: 24px;
     }
 }

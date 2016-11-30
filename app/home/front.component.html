@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="error-message">{{calendarService.errorMessage}}</div>
-    <div class="col-md-4 col-md-offset-4" style="text-align: center;">
+    <div class="button-container">
         <div class="separator"></div>
         <div [routerLink]="['/editor-front']" class="button button-new"
              style="width: 100%;" (click)="calendarService.wantNewCalendar = true">{{languageService.texts.createNew[languageService.setLanguage]}}</div>
