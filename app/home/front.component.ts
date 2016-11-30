@@ -14,6 +14,7 @@ export class FrontComponent {
     participantName: string = '';
     winWidth: any = '';
     winHeight: any = '';
+    isSnowing: boolean = false;
 
     constructor(public calendarService: CalendarService, public languageService: LanguageService, private ngZone:NgZone ){
         window.onresize = (e) =>
@@ -44,5 +45,8 @@ export class FrontComponent {
 
     hideError(){
         this.calendarService.errorMessage = '';
+    }
+    toggleSnow(){
+        this.isSnowing = !this.isSnowing;
     }
 }

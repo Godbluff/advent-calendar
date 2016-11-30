@@ -1,7 +1,5 @@
-﻿<div class="frontbg">
-    <div class="snow"></div>
+﻿<div class="{{isSnowing ? 'frontbg snow': 'frontbg'}}">
     <div class="calendar-header">{{languageService.texts.mainHeader[languageService.setLanguage]}}</div>
-    <div class="calendar-border"></div>
 
     <div class="flag-container">
         <div class="flag flag-gb" (click)="switchLanguage('gb')"></div>
@@ -18,7 +16,8 @@
         {{languageService.texts.welcome[languageService.setLanguage+4]}}<br/><br/>
         </div>
 
-    <div class="loginplate">
+    <div class="loginplate" style="position: relative;">
+        <div class="snow-toggle" (click)="toggleSnow()"></div>
         <h3>{{languageService.texts.loginHead[languageService.setLanguage]}}</h3>
         <div class="input-header">{{languageService.texts.calName[languageService.setLanguage]}}</div>
         <input class="front-input" placeholder="" [(ngModel)]="companyName" (focus)="hideError()"

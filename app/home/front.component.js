@@ -22,6 +22,7 @@ var FrontComponent = (function () {
         this.participantName = '';
         this.winWidth = '';
         this.winHeight = '';
+        this.isSnowing = false;
         window.onresize = function (e) {
             ngZone.run(function () {
                 _this.winWidth = window.innerWidth;
@@ -46,6 +47,9 @@ var FrontComponent = (function () {
     };
     FrontComponent.prototype.hideError = function () {
         this.calendarService.errorMessage = '';
+    };
+    FrontComponent.prototype.toggleSnow = function () {
+        this.isSnowing = !this.isSnowing;
     };
     FrontComponent = __decorate([
         core_1.Component({
