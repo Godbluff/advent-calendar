@@ -23,7 +23,7 @@
     background-size: 50px 50px;
 }
 .calendar-header {
-    width: 350px; padding: 10px 0px 0px 25px; height: 50px; line-height: 70px; text-align: left; font-size: 72px; text-shadow: 0 0 4px black;
+    width: 350px; padding: 10px 0px 0px 25px; height: 50px; line-height: 70px; text-align: left; font-size: 72px;;
     /*background: url(/app/assets/images/bluetop.png);*/
     position: absolute;
     left: 0; top: 10px;
