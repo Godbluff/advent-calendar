@@ -41,4 +41,8 @@ export class FrontComponent {
         localStorage.setItem('CCLang', JSON.stringify({ language: this.languageService.setLanguage}));
         console.log('Setting Language');
     }
+
+    hideError(){
+        this.calendarService.errorMessage = '';
+    }
 }

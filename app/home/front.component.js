@@ -44,6 +44,9 @@ var FrontComponent = (function () {
         localStorage.setItem('CCLang', JSON.stringify({ language: this.languageService.setLanguage }));
         console.log('Setting Language');
     };
+    FrontComponent.prototype.hideError = function () {
+        this.calendarService.errorMessage = '';
+    };
     FrontComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
