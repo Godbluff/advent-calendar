@@ -13,6 +13,7 @@ export class CalendarService {
     userCalendar: any = {};
     userToken: string = '';
     loaderVisible: string = 'none';
+    wantNewCalendar: boolean = true;
 
     constructor(private http: Http, private router: Router) {
     }
@@ -28,7 +29,11 @@ export class CalendarService {
                 localStorage.setItem('CCParticipant', JSON.stringify({ token: this.userToken}));
             })
             .then(()=> this.openCalendar(this.userToken))
-            .catch((error: any) => {console.log(error); this.loaderVisible = 'none';});
+            .catch((error: any) => {
+                Response.status === 400 && this.errorMessage = 'Cannot find Calendar. Check spelling.';
+                console.log(error);
+                this.loaderVisible = 'none';
+            });
     }
 
     openCalendar(token: string){

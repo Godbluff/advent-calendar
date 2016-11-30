@@ -49,6 +49,10 @@ export class LanguageService {
         adminCal: {
             no: 'Rediger eksisterende kalender',
             gb: 'Edit Existing Calendar'
+        },
+        errorMessage: {
+            no: 'Kalenderen finnes ikke. Sjekk etter skrivefeil.',
+            gb: 'Calendar does not exist. Check your spelling.'
         }
     };
 

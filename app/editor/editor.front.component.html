@@ -1,5 +1,5 @@
 <div class="editorbg">
-    <div class="calendar-header">Create New Calendar<div class="calendar-border"></div></div>
+    <div class="calendar-header">{{calendarService.wantNewCalendar ? 'Create New Calendar': 'Edit Exisiting Calendar'}}<div class="calendar-border"></div></div>
     <div class="link">
         <div [routerLink]="['/']" class="glyphicon glyphicon-home icon-link"></div>
     </div>
@@ -8,7 +8,7 @@
         There is no recovery for the password at this time, so make sure you remember it.<br/><br/>
         Once you click 'Initiate Calendar' you will be taken to the main editor to set up your custom calendar.<br/><br/> Have fun.
     </div>
-    <div class="col-sm-4" style="text-align: center;">
+    <div *ngIf="calendarService.wantNewCalendar" class="col-sm-4" style="text-align: center;">
         <div class="input-header">Calendar Name</div>
         <input class="front-input" placeholder="Place Of Business" style="width: 90%; color: white" [(ngModel)]="companyName"
                popover="Type in the name of the calendar you want to check."
@@ -29,8 +29,7 @@
              [popoverAnimation]="true">Initiate Calendar</div>
 
     </div>
-    <div class="col-sm-4" style="text-align: center;"><img src="http://www.freeiconspng.com/uploads/christmas-tree-png-19.png" width="100%"/></div>
-    <div class="col-sm-12" style="text-align: center;">
+    <div *ngIf="!calendarService.wantNewCalendar" class="col-sm-4" style="text-align: center;">
         <div class="input-header">Calendar Name</div>
         <input class="front-input" placeholder="Place Of Business" style="width: 90%; color: white" [(ngModel)]="companyName2"
                popover="Type in the name of the calendar you want to check."
@@ -51,4 +50,6 @@
              [popoverAnimation]="true">Edit Calendar</div>
 
     </div>
+    <div class="col-sm-4" style="text-align: center;"><img src="http://www.freeiconspng.com/uploads/christmas-tree-png-19.png" width="100%"/></div>
+
 </div>

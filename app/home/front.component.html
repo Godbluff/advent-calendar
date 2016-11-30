@@ -20,14 +20,14 @@
     <div class="loginplate">
         <h3>{{languageService.texts.loginHead[languageService.setLanguage]}}</h3>
         <div class="input-header">{{languageService.texts.calName[languageService.setLanguage]}}</div>
-        <input class="front-input" placeholder="" [(ngModel)]="companyName"
+        <input class="front-input" placeholder="" [(ngModel)]="companyName" (focus)="hideError()"
                popover="{{languageService.popovers.frontCalName[languageService.setLanguage]}}"
                popoverPlacement="right"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
         <br/><br/>
         <div class="input-header">{{languageService.texts.userName[languageService.setLanguage]}}</div>
-        <input class="front-input"  placeholder="" [(ngModel)]="participantName"
+        <input class="front-input"  placeholder="" [(ngModel)]="participantName" (focus)="hideError()"
                popover="{{languageService.popovers.frontUserName[languageService.setLanguage]}}"
                popoverPlacement="bottom"
                [popoverOnHover]="true"
@@ -36,11 +36,13 @@
             <div class="timer" [style.display]="calendarService.loaderVisible"></div>{{languageService.texts.openCal[languageService.setLanguage]}}
         </div>
     </div>
+    <div class="error-message">{{languageService.texts.errorMessage[languageService.setLanguage]}}</div>
     <div class="col-md-4 col-md-offset-4" style="text-align: center;">
         <div class="separator"></div>
-        <div></div>
-        <div [routerLink]="['/editor-front']" class="button button-new" style="width: 100%;">{{languageService.texts.createNew[languageService.setLanguage]}}</div>
-        <div [routerLink]="['/editor-front']" class="button button-new" style="width: 100%; margin-top: 20px;">{{languageService.texts.adminCal[languageService.setLanguage]}}</div>
+        <div [routerLink]="['/editor-front']" class="button button-new"
+             style="width: 100%;" (click)="calendarService.wantNewCalendar = true">{{languageService.texts.createNew[languageService.setLanguage]}}</div>
+        <div [routerLink]="['/editor-front']" class="button button-new"
+             style="width: 100%; margin-top: 20px;" (click)="calendarService.wantNewCalendar = false">{{languageService.texts.adminCal[languageService.setLanguage]}}</div>
     </div>
 
     <div class="ornament">

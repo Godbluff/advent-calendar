@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorService } from './editor.service';
 import {LanguageService} from "../services/languages.service";
+import {CalendarService} from "../services/calendar.service";
 
 @Component({
     moduleId: module.id,
@@ -16,7 +17,7 @@ export class EditorFrontComponent implements OnInit {
     companyName2: string = '';
     adminPassword2 : string = '';
 
-    constructor(public editorService: EditorService, public languageService: LanguageService){
+    constructor(public editorService: EditorService,public calendarService: CalendarService, public languageService: LanguageService){
 
     }
     ngOnInit(){
