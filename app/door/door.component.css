@@ -253,6 +253,22 @@
     
 }
 
+@media screen and (max-width: 935px) {
+
+    .front {
+        background-size: auto 840px;
+    }
+
+}
+
+@media screen and (max-width: 795px) {
+
+    .front {
+        background-size: auto 960px;
+    }
+
+}
+
 @media screen and (max-width: 740px) {
     .door-container{
         height: 90px;
