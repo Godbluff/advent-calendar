@@ -222,25 +222,25 @@ input{
 @-webkit-keyframes snow {
     0% { background-position: 0px 0px, 0px 0px, 0px 0px, center }
     100% {
-        background-position: 500px 1000px, 400px 800px, 300px 600px, center;
+        background-position: 300px 600px, 400px 400px, 500px 100px, center;
     }
 }
 @-moz-keyframes snow {
     0% { background-position: 0px 0px, 0px 0px, 0px 0px, center }
     100% {
-        background-position: 500px 1000px, 400px 800px, 300px 600px, center;
+        background-position: 300px 600px, 400px 400px, 500px 1000px, center;
     }
 }
 @-ms-keyframes snow {
     0% { background-position: 0px 0px, 0px 0px, 0px 0px, center }
     100% {
-        background-position: 500px 1000px, 400px 800px, 300px 600px, center;
+        background-position: 300px 600px, 400px 400px, 500px 1000px, center;
     }
 }
 @keyframes snow {
     0% { background-position: 0px 0px, 0px 0px, 0px 0px, center }
     100% {
-        background-position: 500px 1000px, 400px 800px, 300px 600px, center;
+        background-position: 300px 600px, 400px 400px, 500px 1000px, center;
     }
 }
 
