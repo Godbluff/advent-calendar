@@ -4,8 +4,7 @@
     background: url('/app/assets/images/chrismasbg2.jpg') center no-repeat;
     background-size: cover;
     color: white;
-    padding: 100px 50px 50px 50px;
-    float:left;
+    padding: 100px 0px 50px 0px;
 }
 .calendar-header {
     width: 250px; padding: 10px 0px 0px 25px; height: 50px; line-height: 60px; text-align: left; font-size: 54px; text-shadow: 0 0 4px black;
@@ -37,10 +36,12 @@
     width: 400px;
     padding: 70px 50px 80px 50px;
     text-align: center;
+    margin-bottom:30px;
 }
 .ornament{
     position: absolute; right: 0px;
     top: 0px;
+    width: 30%
 }
 
 h3{
@@ -95,24 +96,25 @@ input{
 
 .timer{
     position: absolute;
-    top: 4px;
-    right: -30px;
-    width: 24px;
-    height: 24px;
+    top: 42px;
+    right: 50%;
+    margin-right: -18px;
+    width: 36px;
+    height: 36px;
     background-color: transparent;
-    box-shadow: inset 0px 0px 0px 2px #fff;
+    box-shadow: inset 0px 0px 0px 2px #000;
     border-radius: 50%;
 }
 .timer:after, .timer:before{
     position: absolute;
     content:"";
-    background-color: #fff;
+    background-color: #000;
 }
 .timer:after{
-    width: 10px;
+    width: 16px;
     height: 2px;
-    top: 11px;
-    left: 11px;
+    top: 17px;
+    left: 17px;
     -webkit-transform-origin: 1px 1px;
     -moz-transform-origin: 1px 1px;
     transform-origin: 1px 1px;
@@ -122,10 +124,10 @@ input{
 }
 
 .timer:before{
-    width: 8px;
+    width: 12px;
     height: 2px;
-    top: 11px;
-    left: 11px;
+    top: 17px;
+    left: 17px;
     -webkit-transform-origin: 1px 1px;
     -moz-transform-origin: 1px 1px;
     transform-origin: 1px 1px;
@@ -209,10 +211,10 @@ input{
 
     position: relative;
     overflow: visible; /* IE9 & 10 */
-    -webkit-transition: 500ms linear;
-    -moz-transition: 500ms linear;
-    -o-transition: 500ms linear;
-    transition: 500ms linear;
+    -webkit-transition: 200ms linear;
+    -moz-transition: 200ms linear;
+    -o-transition: 200ms linear;
+    transition: 200ms linear;
     cursor: pointer;
 }
 
@@ -256,24 +258,24 @@ input{
 }
 
 .button-new{
-    background: rgb(60,141,13);
+    background: rgb(47, 94, 13);
     box-shadow: inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
-    inset 0 0 6px #da3b2c, /* inner glow */
-    inset 0 80px 80px -40px #dd4330, /* gradient */
+    inset 0 0 6px #50870d, /* inner glow */
+    inset 0 80px 80px -40px #3c9b0d, /* gradient */
     1px 1px 3px rgba(0,0,0,0.75); /* shadow */
 }
 .button-new:hover{
-    background: rgb(60,141,13);
+    background: rgb(72, 115, 13);
     box-shadow: inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
-    inset 0 0 6px #da3b2c, /* inner glow */
-    inset 0 80px 80px -40px #dd4330, /* gradient */
+    inset 0 0 6px #67a50d, /* inner glow */
+    inset 0 80px 80px -40px #40a90d, /* gradient */
     1px 1px 3px rgba(0,0,0,0.75); /* shadow */
 }
 .button-new:active{
     background: rgb(60,141,13);
     box-shadow: inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
-    inset 0 0 6px #da3b2c, /* inner glow */
-    inset 0 80px 80px -40px #dd4330, /* gradient */
+    inset 0 0 6px #71b90d, /* inner glow */
+    inset 0 80px 80px -40px #3c9b0d, /* gradient */
     1px 1px 3px rgba(0,0,0,0.75); /* shadow */
 }
 
