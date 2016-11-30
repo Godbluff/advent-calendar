@@ -6,6 +6,7 @@ import { ICalendar } from "../calendar";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import {LanguageService} from "./languages.service";
 
 @Injectable()
 export class CalendarService {
@@ -14,8 +15,9 @@ export class CalendarService {
     userToken: string = '';
     loaderVisible: string = 'none';
     wantNewCalendar: boolean = true;
+    errorMessage: string = '';
 
-    constructor(private http: Http, private router: Router) {
+    constructor(private http: Http, private router: Router, public languageService: LanguageService) {
     }
 
     getCalendar(companyName: string, participantName: string): void {
@@ -30,8 +32,7 @@ export class CalendarService {
             })
             .then(()=> this.openCalendar(this.userToken))
             .catch((error: any) => {
-                Response.status === 400 && this.errorMessage = 'Cannot find Calendar. Check spelling.';
-                console.log(error);
+                error.status === 400 ? this.errorMessage = this.languageService.texts.errorMessage[this.languageService.setLanguage] : this.errorMessage = '';
                 this.loaderVisible = 'none';
             });
     }
