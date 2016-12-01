@@ -61,9 +61,11 @@ $.fn.sparklingDoor = function( options ) {
 
         var sparkle = new Sparkle( $this, settings );
         sparkle.over();
-        $this.click(function (){
-            sparkle.out();
-        });
+
+        // TEMOPORARY FIX FOR GLITTER, TURN ON AGAIN
+        //$this.click(function (){
+        //    sparkle.out();
+        //});
 
     });
 

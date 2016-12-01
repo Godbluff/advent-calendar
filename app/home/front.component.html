@@ -22,14 +22,14 @@
         <div class="input-header">{{languageService.texts.calName[languageService.setLanguage]}}</div>
         <input class="front-input" placeholder="" [(ngModel)]="companyName" (focus)="hideError()"
                popover="{{languageService.popovers.frontCalName[languageService.setLanguage]}}"
-               popoverPlacement="right"
+               popoverPlacement="top"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
         <br/><br/>
         <div class="input-header">{{languageService.texts.userName[languageService.setLanguage]}}</div>
         <input class="front-input"  placeholder="" [(ngModel)]="participantName" (focus)="hideError()"
                popover="{{languageService.popovers.frontUserName[languageService.setLanguage]}}"
-               popoverPlacement="bottom"
+               popoverPlacement="top"
                [popoverOnHover]="true"
                [popoverAnimation]="true"/>
         <div class="button" style="width: 80%; margin-top:20px; position: relative;" (click)="calendarService.getCalendar(companyName, participantName)">

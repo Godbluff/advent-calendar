@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Http, Response, Headers } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+
 import { ICalendar } from "../calendar";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -16,6 +17,7 @@ export class CalendarService {
     loaderVisible: string = 'none';
     wantNewCalendar: boolean = true;
     errorMessage: string = '';
+    todayNumber: number = 0;
 
     constructor(private http: Http, private router: Router, public languageService: LanguageService) {
     }
@@ -38,6 +40,9 @@ export class CalendarService {
     }
 
     openCalendar(token: string){
+        let date = new Date();
+        this.todayNumber = date.getDate();
+        console.log(this.todayNumber);
         let headers: any = new Headers({'Accept': 'application/json', 'X-Participant' : token});
         this.http.get(this.calendarUrl, {headers: headers})
             .toPromise()

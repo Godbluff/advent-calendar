@@ -75,6 +75,7 @@
 
 .front {
     background: url('/app/assets/images/calendar-bg.jpg') no-repeat;
+    background-size: 1000px;
     z-index: 2;
     font-size: 36px;
     color: white;
@@ -222,6 +223,8 @@
     0%{transform:rotate(0deg)}
     100%{transform:rotate(360deg)}
 }
+
+
 @media screen and (max-width: 1920px){
     .door-container{
         margin: 30px 40px;
