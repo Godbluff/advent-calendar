@@ -166,7 +166,14 @@ div.panel-heading {
 
 @media screen and (max-width: 420px){
     .christmasbg {
+        height: 680px;
+        padding-left: 10px;
+    }
+}
 
+@media screen and (max-width: 369px){
+    .christmasbg {
+        height: 840px;
         padding-left: 10px;
     }
 }

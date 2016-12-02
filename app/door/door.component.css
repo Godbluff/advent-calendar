@@ -337,11 +337,17 @@
         transform: rotateX(150deg);
     }
     .front {
-        background-size: auto 840px;
+        background-size: auto 680px;
     }
     .back p {
         transform: rotate(180deg);
         transform-origin: 50% 25%;
     }
 
+}
+
+@media screen and (max-width: 369px) {
+    .front {
+        background-size: auto 840px;
+    }
 }
