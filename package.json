@@ -7,8 +7,9 @@
   "author": "Bjørn Arve Lagim",
   "description": "Package for the Acme Product Management sample application",
   "scripts": {
-    "postinstall": "typings install",
+    "postinstall": "typings install && tsc",
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start-prod": "http-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lint": "tslint ./app/**/*.ts -t verbose",
@@ -29,6 +30,7 @@
     "bootstrap": "^3.3.6",
     "concurrently": "^2.2.0",
     "core-js": "^2.4.1",
+    "http-server": "0.9.0",
     "lite-server": "^2.2.0",
     "ng-lightning": "^1.0.2",
     "ng2-popover": "0.0.11",
