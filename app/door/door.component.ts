@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions, Response} from '@angular/http';
 import {CalendarModal} from "../shared/calendar.modal";
 import {CalendarService} from "../services/calendar.service";
 import './sparkly.js'
+import {LanguageService} from "../services/languages.service";
 
 declare var $:any;
 
@@ -37,7 +38,7 @@ export class DoorComponent {
 
     private loaderVisible: string = 'none';
 
-    constructor(public calendarService : CalendarService, private http: Http){}
+    constructor(public calendarService : CalendarService, private http: Http, private languageService: LanguageService){}
 
     ngOnInit(): void {
 

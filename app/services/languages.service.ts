@@ -53,6 +53,10 @@ export class LanguageService {
         errorMessage: {
             no: 'Kalenderen finnes ikke. Sjekk etter skrivefeil.',
             gb: 'Calendar does not exist. Check your spelling.'
+        },
+        doorClick: {
+            no: 'Klikk her',
+            gb: 'Click here'
         }
     };
 

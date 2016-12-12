@@ -4,7 +4,7 @@
   "engines": {
     "node": "6.7.0"
   },
-  "author": "Deborah Kurata",
+  "author": "Bjørn Arve Lagim",
   "description": "Package for the Acme Product Management sample application",
   "scripts": {
     "postinstall": "typings install",
